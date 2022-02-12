@@ -5,10 +5,13 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    public Vector2 moveInput;
+    public Vector2 lookInput;
+    private Vector2 mousePrevious;
+
     void Start()
     {
         InputActionAsset controls = GetComponent<PlayerInput>().actions;
-
 
         // Add STOPPING when you're no longer holding the button
         controls.FindAction("MoveLeft").canceled += x => OnMoveLeftCanceled();
@@ -17,44 +20,49 @@ public class InputManager : MonoBehaviour
         controls.FindAction("MoveBack").canceled += x => OnMoveBackCanceled();
     }
 
+    private void LateUpdate()
+    {
+        lookInput = Vector2.zero;
+    }
+
     public void OnMoveLeft(InputValue input)
     {
-        // TODO (Chase)
+        moveInput.x = -input.Get<float>();
     }
 
     public void OnMoveLeftCanceled()
     {
-        // TODO (Chase)
+        moveInput.x = 0;
     }
 
     public void OnMoveRight(InputValue input)
     {
-        // TODO (Chase)
+        moveInput.x = input.Get<float>();
     }    
 
     public void OnMoveRightCanceled()
     {
-        // TODO (Chase)
+        moveInput.x = 0;
     }
 
     public void OnMoveForward(InputValue input)
     {
-        // TODO (Chase)
+        moveInput.y = input.Get<float>();
     }    
 
     public void OnMoveForwardCanceled()
     {
-        // TODO (Chase)
+        moveInput.y = 0;
     }
 
     public void OnMoveBack(InputValue input)
     {
-        // TODO (Chase)
+        moveInput.y = -input.Get<float>();
     }
 
     public void OnMoveBackCanceled()
     {
-        // TODO (Chase)
+        moveInput.y = 0;
     }
 
     public void OnShoot(InputValue input)
@@ -68,25 +76,22 @@ public class InputManager : MonoBehaviour
         // TODO (Chase)
     }
 
-    // LOOKING (only up) on gamepad control scheme
+    // LOOKING on gamepad control scheme
     // (Correct version should be automatically called based on your input device)
-    public void OnLookUpGamepad(InputValue input)
+    public void OnLookGamepad(InputValue input)
     {
-        // TODO (Chase)
-    }
-
-    // LOOKING (only down) on gamepad control scheme
-    // (Correct version should be automatically called based on your input device)
-    public void OnLookDownGamepad(InputValue input)
-    {
-        // TODO (Chase)
+        lookInput = input.Get<Vector2>();
     }
 
     // LOOKING (both up and down) if you are on the keyboard control scheme
     // (Correct version should be automatically called based on your input device)
     public void OnLookMouse(InputValue input)
     {
-        // TODO (Chase)
+        Vector2 mouse = input.Get<Vector2>();
+        if(mousePrevious != Vector2.zero)
+            lookInput = mouse - mousePrevious;
+        mousePrevious = mouse;
+        Debug.Log(lookInput);
     }
 
     public void OnPause(InputValue input)

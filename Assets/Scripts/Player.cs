@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float xLookSensitivity = 5;
     public float yLookSensitivity = 5;
 
+    private InputManager input;
     private CharacterController controller;
     private new Camera camera;
     private Vector3 moveInput;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         camera = GetComponentInChildren<Camera>();
+        input = GetComponent<InputManager>();
     }
 
     void Update()
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
                     camera.transform.rotation = Quaternion.LookRotation(Vector3.up, -transform.forward);
             }
         }
+        moveInput = new Vector3(input.moveInput.x, 0, input.moveInput.y);
     }
 
     void FixedUpdate()
