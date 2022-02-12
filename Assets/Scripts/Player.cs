@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float xLookSensitivity = 5;
     public float yLookSensitivity = 5;
 
+    private Coroutine liftRoutine;
     private InputManager input;
     private CharacterController controller;
     private new Camera camera;
@@ -26,8 +27,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        lookInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        moveInput = new Vector3(input.moveInput.x, 0, input.moveInput.y);
+        lookInput = input.lookInput;
 
         if(enableLook)
         {
@@ -43,7 +44,18 @@ public class Player : MonoBehaviour
                     camera.transform.rotation = Quaternion.LookRotation(Vector3.up, -transform.forward);
             }
         }
-        moveInput = new Vector3(input.moveInput.x, 0, input.moveInput.y);
+
+        if (input.wizardInteract && liftRoutine == null)
+        {
+            Debug.Log("StartRoutine");
+            RaycastHit hit;
+            Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * 5, Color.yellow, 1);
+            if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 5, LayerMask.GetMask("Player")))
+            {
+                Debug.Log("HitPlayer");
+                liftRoutine = StartCoroutine(PickupRoutine(hit.transform));
+            }
+        }
     }
 
     void FixedUpdate()
@@ -51,6 +63,21 @@ public class Player : MonoBehaviour
         if(enableMovement)
         {
             controller.Move(Quaternion.LookRotation(transform.forward) * moveInput * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    private IEnumerator PickupRoutine(Transform otherPlayer)
+    {
+        float pickupProgress = 0;
+        while(pickupProgress < 1)
+        {
+            float angle = Mathf.Lerp(0, Mathf.PI / 2, pickupProgress);
+            Vector3 offset = transform.rotation * new Vector3(0, Mathf.Sin(angle), Mathf.Cos(angle)) * 2;
+
+            otherPlayer.position = transform.position + offset;
+            pickupProgress += 2f * Time.deltaTime;
+
+            yield return null;
         }
     }
 }

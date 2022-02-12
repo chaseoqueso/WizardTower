@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    public bool wizardInteract { get; private set; }
     public Vector2 moveInput;
     public Vector2 lookInput;
     private Vector2 mousePrevious;
+    private Vector2 lookPrevious;
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class InputManager : MonoBehaviour
     private void LateUpdate()
     {
         lookInput = Vector2.zero;
+        wizardInteract = false;
     }
 
     public void OnMoveLeft(InputValue input)
@@ -73,7 +76,7 @@ public class InputManager : MonoBehaviour
     // Picking up and dropping wizards
     public void OnWizardInteract(InputValue input)
     {
-        // TODO (Chase)
+        wizardInteract = input.Get<float>() == 1;
     }
 
     // LOOKING on gamepad control scheme
@@ -88,10 +91,12 @@ public class InputManager : MonoBehaviour
     public void OnLookMouse(InputValue input)
     {
         Vector2 mouse = input.Get<Vector2>();
-        if(mousePrevious != Vector2.zero)
-            lookInput = mouse - mousePrevious;
+        if (mousePrevious != Vector2.zero)
+        {
+            lookInput = ((mouse - mousePrevious) + lookPrevious)/2;
+        }
         mousePrevious = mouse;
-        Debug.Log(lookInput);
+        lookPrevious = mouse - mousePrevious;
     }
 
     public void OnPause(InputValue input)

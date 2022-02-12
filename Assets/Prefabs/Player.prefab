@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 9202458106119486849}
   - component: {fileID: 9202458106119486851}
   - component: {fileID: 9202458106119486848}
-  m_Layer: 0
+  - component: {fileID: 8656775546594348195}
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +82,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &8656775546594348195
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202458106119486854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df30aabb63c949749919ef8bdad8f172, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9202458107209241481
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,8 +200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableMovement: 1
-  xLookSensitivity: 5
-  yLookSensitivity: 5
+  enableLook: 1
+  xLookSensitivity: 0.5
+  yLookSensitivity: 0.5
 --- !u!114 &418084484739323210
 MonoBehaviour:
   m_ObjectHideFlags: 0
