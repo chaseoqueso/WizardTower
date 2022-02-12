@@ -130,18 +130,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4386433650705233928, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386433650705233928, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: enableLook
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: enableMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9202458106119486848, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09ea9e4ec0268584f9f0936d23acb2cc, type: 2}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Height
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9202458107209241481, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Name
       value: Player 4
@@ -214,7 +238,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8447547085723755365, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+    - {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
 --- !u!1 &509690084
 GameObject:
@@ -412,18 +438,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4386433650705233928, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386433650705233928, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: enableLook
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: enableMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9202458106119486848, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1aa40eed420e375478aea06d8e1cd01c, type: 2}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Height
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9202458107209241481, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -488,7 +538,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8447547085723755365, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+    - {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
 --- !u!1001 &1500267607
 PrefabInstance:
@@ -497,18 +549,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4386433650705233928, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386433650705233928, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: enableLook
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: enableMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9202458106119486848, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7c3898a2c7bc8bd48aa88461be22614a, type: 2}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Height
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9202458107209241481, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Name
       value: Player 3
@@ -581,7 +657,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8447547085723755365, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+    - {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
 --- !u!1001 &9202458107043374517
 PrefabInstance:
@@ -593,6 +671,22 @@ PrefabInstance:
     - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: lookSensitivity
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Height
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9202458107209241481, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Name
@@ -642,5 +736,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8447547085723755365, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+    - {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}

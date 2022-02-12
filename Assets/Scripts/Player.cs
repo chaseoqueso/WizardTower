@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private const float moveSpeed = 5;
+    private const float pickupDistance = 2.5f;
 
     public bool enableMovement;
     public bool enableLook;
+    public bool beingPickedUp;
     public float xLookSensitivity = 5;
     public float yLookSensitivity = 5;
 
@@ -45,15 +47,15 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (input.wizardInteract && liftRoutine == null)
+        if (input.wizardInteract && !beingPickedUp && liftRoutine == null)
         {
             Debug.Log("StartRoutine");
             RaycastHit hit;
             Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * 5, Color.yellow, 1);
-            if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, 5, LayerMask.GetMask("Player")))
+            if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
             {
                 Debug.Log("HitPlayer");
-                liftRoutine = StartCoroutine(PickupRoutine(hit.transform));
+                liftRoutine = StartCoroutine(PickupRoutine(hit.transform.GetComponent<Player>()));
             }
         }
     }
@@ -66,18 +68,61 @@ public class Player : MonoBehaviour
         }
     }
 
-    private IEnumerator PickupRoutine(Transform otherPlayer)
+    private IEnumerator PickupRoutine(Player otherPlayer)
     {
+        CharacterController otherController = otherPlayer.GetComponent<CharacterController>();
+
+        otherPlayer.beingPickedUp = true;
+        otherPlayer.enableMovement = false;
+        enableMovement = false;
+
         float pickupProgress = 0;
         while(pickupProgress < 1)
         {
             float angle = Mathf.Lerp(0, Mathf.PI / 2, pickupProgress);
-            Vector3 offset = transform.rotation * new Vector3(0, Mathf.Sin(angle), Mathf.Cos(angle)) * 2;
+            Vector3 destination = transform.position + transform.rotation * new Vector3(0, Mathf.Sin(angle), Mathf.Cos(angle)) * pickupDistance;
 
-            otherPlayer.position = transform.position + offset;
+            otherController.Move(destination - otherController.transform.position);
             pickupProgress += 2f * Time.deltaTime;
 
             yield return null;
+        }
+        enableMovement = true;
+
+        while (!input.wizardInteract)
+        {
+            otherPlayer.transform.position = transform.position + Vector3.up * pickupDistance;
+            yield return null;
+        }
+
+        enableMovement = false;
+        while (pickupProgress > 0)
+        {
+            float angle = Mathf.Lerp(0, Mathf.PI / 2, pickupProgress);
+            Vector3 destination = transform.position + transform.rotation * new Vector3(0, Mathf.Sin(angle), Mathf.Cos(angle)) * pickupDistance;
+
+            otherController.Move(destination - otherController.transform.position);
+            pickupProgress -= 2f * Time.deltaTime;
+
+            yield return null;
+        }
+
+        enableMovement = true;
+        otherPlayer.enableMovement = true;
+        otherPlayer.beingPickedUp = false;
+        liftRoutine = null;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        Debug.Log(other);
+        if (beingPickedUp && (other.gameObject.layer == LayerMask.NameToLayer("Player") && other.gameObject != gameObject))
+        {
+            Vector3 direction = other.transform.position - transform.position;
+            direction.y = 0;
+            Debug.Log(other.transform.position);
+            Debug.Log(transform.position);
+            other.gameObject.GetComponent<CharacterController>().Move(direction);
         }
     }
 }
