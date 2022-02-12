@@ -56,8 +56,7 @@ public class CharSelectPanel : MonoBehaviour
     public void SetNewPlayerValues()
     {
         // Get this player object somehow
-
-        // Set player #
+        
 
         // Set the model
         

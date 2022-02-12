@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public GameObject playerPrefab;
-
     [HideInInspector] public float timeSinceStart;
 
     void Awake()
