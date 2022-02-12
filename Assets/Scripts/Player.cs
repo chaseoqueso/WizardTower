@@ -6,14 +6,18 @@ public class Player : MonoBehaviour
 {
     private const float moveSpeed = 5;
     private const float pickupDistance = 2.5f;
+    private const float shootCooldown = 0.5f;
 
     public bool enableMovement;
     public bool enableLook;
     public bool beingPickedUp;
+    public bool isOnCooldown;
     public float xLookSensitivity = 5;
     public float yLookSensitivity = 5;
+    public GameObject projectilePrefab;
 
     private Coroutine liftRoutine;
+    private Coroutine cooldownRoutine;
     private InputManager input;
     private CharacterController controller;
     private new Camera camera;
@@ -51,12 +55,19 @@ public class Player : MonoBehaviour
         {
             Debug.Log("StartRoutine");
             RaycastHit hit;
-            Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * 5, Color.yellow, 1);
+            Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * pickupDistance, Color.yellow, 1);
             if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
             {
                 Debug.Log("HitPlayer");
                 liftRoutine = StartCoroutine(PickupRoutine(hit.transform.GetComponent<Player>()));
             }
+        }
+
+        if(input.shoot && !isOnCooldown)
+        {
+            GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.rotation * new Vector3(0, 1.5f, 1f), Quaternion.identity);
+            projectile.GetComponent<Projectile>().direction = transform.forward;
+            cooldownRoutine = StartCoroutine(StartCooldown());
         }
     }
 
@@ -113,16 +124,10 @@ public class Player : MonoBehaviour
         liftRoutine = null;
     }
 
-    void OnTriggerStay(Collider other)
+    private IEnumerator StartCooldown()
     {
-        Debug.Log(other);
-        if (beingPickedUp && (other.gameObject.layer == LayerMask.NameToLayer("Player") && other.gameObject != gameObject))
-        {
-            Vector3 direction = other.transform.position - transform.position;
-            direction.y = 0;
-            Debug.Log(other.transform.position);
-            Debug.Log(transform.position);
-            other.gameObject.GetComponent<CharacterController>().Move(direction);
-        }
+        isOnCooldown = true;
+        yield return new WaitForSeconds(shootCooldown);
+        isOnCooldown = false;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public bool wizardInteract { get; private set; }
+    public bool shoot { get; private set; }
     public Vector2 moveInput;
     public Vector2 lookInput;
     private Vector2 mousePrevious;
@@ -26,6 +27,7 @@ public class InputManager : MonoBehaviour
     {
         lookInput = Vector2.zero;
         wizardInteract = false;
+        shoot = false;
     }
 
     public void OnMoveLeft(InputValue input)
@@ -70,7 +72,7 @@ public class InputManager : MonoBehaviour
 
     public void OnShoot(InputValue input)
     {
-        // TODO
+        shoot = input.Get<float>() == 1;
     }
 
     // Picking up and dropping wizards

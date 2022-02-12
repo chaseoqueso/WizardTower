@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: enableMovement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1385012735798279716, guid: ea75bf53a41a1744c9db4d06def47408, type: 3}
     - target: {fileID: 9202458106119486848, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -454,6 +458,10 @@ PrefabInstance:
       propertyPath: enableMovement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1385012735798279716, guid: ea75bf53a41a1744c9db4d06def47408, type: 3}
     - target: {fileID: 9202458106119486848, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -565,6 +573,10 @@ PrefabInstance:
       propertyPath: enableMovement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1385012735798279716, guid: ea75bf53a41a1744c9db4d06def47408, type: 3}
     - target: {fileID: 9202458106119486848, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -672,6 +684,10 @@ PrefabInstance:
       propertyPath: lookSensitivity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6121506625607430862, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1385012735798279716, guid: ea75bf53a41a1744c9db4d06def47408, type: 3}
     - target: {fileID: 9202458107209241480, guid: 12f7727a03a20294db5b22ed664fd589, type: 3}
       propertyPath: m_Height
       value: 2.2
