@@ -46,22 +46,22 @@ public class EnemyAI : MonoBehaviour
         {
             case 0:
                 //blue
-                childObject.GetComponent<MeshRenderer>().material = blue;
+                //childObject.GetComponent<MeshRenderer>().material = blue;
                 childObject.tag = "Blue";
                 break;
             case 1:
                 //green
-                childObject.GetComponent<MeshRenderer>().material = green;
+                //childObject.GetComponent<MeshRenderer>().material = green;
                 childObject.tag = "Green";
                 break;
             case 2:
                 //red
-                childObject.GetComponent<MeshRenderer>().material = red;
+                //childObject.GetComponent<MeshRenderer>().material = red;
                 childObject.tag = "Red";
                 break;
             case 3:
                 //yellow
-                childObject.GetComponent<MeshRenderer>().material = yellow;
+                //childObject.GetComponent<MeshRenderer>().material = yellow;
                 childObject.tag = "Yellow";
                 break;
         }
