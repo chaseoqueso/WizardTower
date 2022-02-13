@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private InputManager input;
     private CharacterController controller;
     private new Camera camera;
+    private Animator playerAnimator;
+    private Animator firstPersonAnimator;
     private Vector3 moveInput;
     private Vector2 lookInput;
     private Vector3 currentVelocity;
@@ -49,6 +51,8 @@ public class Player : MonoBehaviour
 
         //Initialize the models to display on the proper layers
         Model model = GetComponentInChildren<Model>();
+        playerAnimator = model.playerAnimator;
+        firstPersonAnimator = model.firstPersonAnimator;
 
         foreach (GameObject m in model.thisPlayerOnly)
         {
@@ -71,17 +75,17 @@ public class Player : MonoBehaviour
         moveInput = new Vector3(input.moveInput.x, 0, input.moveInput.y);
         lookInput = input.lookInput;
 
-        if(enableLook)
+        if (enableLook)
         {
             transform.Rotate(Vector3.up, lookInput.x * xLookSensitivity);
 
             camera.transform.Rotate(Vector3.right, -lookInput.y * yLookSensitivity);
 
-            if(Vector3.Dot(camera.transform.forward, transform.forward) < 0)
+            if (Vector3.Dot(camera.transform.forward, transform.forward) < 0)
             {
-                if(lookInput.y < 0)
+                if (lookInput.y < 0)
                     camera.transform.rotation = Quaternion.LookRotation(-Vector3.up, transform.forward);
-                if(lookInput.y > 0)
+                if (lookInput.y > 0)
                     camera.transform.rotation = Quaternion.LookRotation(Vector3.up, -transform.forward);
             }
         }
@@ -89,17 +93,23 @@ public class Player : MonoBehaviour
         if (input.wizardInteract && !beingPickedUp && liftRoutine == null)
         {
             Debug.Log("StartRoutine");
+            playerAnimator.SetTrigger("Grab");
+            firstPersonAnimator.SetTrigger("Grab");
             RaycastHit hit;
             Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * pickupDistance, Color.yellow, 1);
             if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
             {
                 Debug.Log("HitPlayer");
+                playerAnimator.SetBool("Pickup", true);
+                firstPersonAnimator.SetBool("Pickup", true);
                 liftRoutine = StartCoroutine(PickupRoutine(hit.transform.GetComponent<Player>()));
             }
         }
 
-        if(input.shoot && !isOnCooldown && liftRoutine == null)
+        if (input.shoot && !isOnCooldown && liftRoutine == null)
         {
+            playerAnimator.SetTrigger("Shoot");
+            firstPersonAnimator.SetTrigger("Shoot");
             GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.rotation * new Vector3(0, 1.5f, 1f), Quaternion.identity);
             projectile.GetComponent<Projectile>().direction = transform.forward;
             cooldownRoutine = StartCoroutine(StartCooldown());
@@ -108,13 +118,13 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(enableMovement)
+        if (enableMovement)
         {
             Vector3 targetVelocity = Quaternion.LookRotation(transform.forward) * moveInput * moveSpeed * Time.fixedDeltaTime;
 
             if (currentVelocity.x < targetVelocity.x)
             {
-                if(currentVelocity.x + accel > targetVelocity.x)
+                if (currentVelocity.x + accel > targetVelocity.x)
                     currentVelocity.x = targetVelocity.x;
                 else
                     currentVelocity.x += accel;
@@ -128,7 +138,7 @@ public class Player : MonoBehaviour
                     currentVelocity.x -= accel;
             }
 
-            if(Mathf.Abs(currentVelocity.x) < accel/2)
+            if (Mathf.Abs(currentVelocity.x) < accel / 2)
                 currentVelocity.x = 0;
 
             if (currentVelocity.z < targetVelocity.z)
@@ -170,7 +180,7 @@ public class Player : MonoBehaviour
         enableMovement = false;
 
         float pickupProgress = 0;
-        while(pickupProgress < 1)
+        while (pickupProgress < 1)
         {
             float angle = Mathf.Lerp(0, Mathf.PI / 2, pickupProgress);
             Vector3 destination = transform.position + transform.rotation * new Vector3(0, Mathf.Sin(angle), Mathf.Cos(angle)) * pickupDistance;
@@ -182,11 +192,14 @@ public class Player : MonoBehaviour
         }
         enableMovement = true;
 
-        while (!input.wizardInteract)
+        while (!input.wizardInteract || beingPickedUp)
         {
             otherPlayer.transform.position = transform.position + Vector3.up * pickupDistance;
             yield return null;
         }
+
+        playerAnimator.SetBool("Pickup", false);
+        firstPersonAnimator.SetBool("Pickup", false);
 
         enableMovement = false;
         while (pickupProgress > 0)
