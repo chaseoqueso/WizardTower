@@ -10,24 +10,22 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject enemyPrefab;
     [SerializeField]
-    private float spawnCooldown = 2f;
+    private float spawnCooldown = 6f;
     [SerializeField]
-    private float spawnDelay = 2f;
+    private float spawnDelay = 6f;
 
     //This is for phase changes. Phase 1 -> Phase 2 -> Phase 3.....
     // Within phase changes you can change the spawn rate and other enemy variables.
     [SerializeField]
-    private float p1 = 3f;
+    private float p1 = 60f;
     [SerializeField]
-    private float p2 = 3f;
+    private float p2 = 60f;
     [SerializeField]
-    private float p3 = 3f;
+    private float p3 = 40f;
     // Start is called before the first frame update
     void Start()
     {
         spawnListNum = transform.childCount;
-        Debug.Log(spawnListNum);
-        test();
         StartCoroutine(phase1());
 
     }
@@ -52,15 +50,11 @@ public class EnemySpawner : MonoBehaviour
             lastRand = randSpawn;
         }
     }
-    private void test()
-    {
-        foreach (Transform child in transform)
-            Debug.Log(child.position);
-    }
     IEnumerator phase1()
     {
         yield return new WaitForSeconds(p1);
         //number changes
+        spawnCooldown = 5f;
         Debug.Log("p1 done");
         StartCoroutine(phase2());
     }
@@ -68,6 +62,7 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(p2);
         //number changes
+        spawnCooldown = 4f;
         Debug.Log("p2 done");
         StartCoroutine(phase3());
         
@@ -76,6 +71,7 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(p3);
         Debug.Log("p3 done");
+        spawnCooldown = 3f;
         //number changes
 
     }
