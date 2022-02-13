@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 4ea272b5c29d63a4ab097f86d5245ed2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Afta serif
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 19b9704d88a3454499cb24218a5ec776, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
