@@ -10,20 +10,32 @@ public class EnemySpawner : MonoBehaviour
     private int randHeight;
     [SerializeField]
     private GameObject enemyPrefab;
+    //Spawn rate
     [SerializeField]
     private float spawnCooldown = 6f;
     [SerializeField]
     private float spawnDelay = 6f;
 
-    //This is for phase changes. Phase 1 -> Phase 2 -> Phase 3.....
-    // Within phase changes you can change the spawn rate and other enemy variables.
+    //This is for phase changes. Phase 1 duraton -> Phase 2 -> Phase 3.....
+    // Within phase changes you can change the spawn rate and other variables.
     [SerializeField]
     private float p1 = 60f;
     [SerializeField]
     private float p2 = 60f;
     [SerializeField]
     private float p3 = 40f;
-    // Start is called before the first frame update
+
+    // Height Probability
+    [SerializeField]
+    private int h1 = 25;
+    [SerializeField]
+    private int h2 = 30;
+    [SerializeField]
+    private int h3 = 30;
+    [SerializeField]
+    private int h4 = 15;
+    // make sure these add up to 100
+    // h4 is not actually used
     void Start()
     {
         spawnListNum = transform.childCount;
@@ -34,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (spawnDelay > 0)
         {
             spawnDelay -= Time.deltaTime;
@@ -49,15 +62,15 @@ public class EnemySpawner : MonoBehaviour
             //random spawn height
             GameObject enemy = Instantiate(enemyPrefab, transform.GetChild(randSpawn));
             randHeight = Random.Range(0, 100);
-            if(randHeight < 25)
+            if(randHeight < h1)
             {
                 enemy.GetComponent<EnemyAI>().SetHeight(1);
             }
-            else if (randHeight < 55)
+            else if (randHeight < h1 + h2)
             {
                 enemy.GetComponent<EnemyAI>().SetHeight(2);
             }
-            else if (randHeight < 85)
+            else if (randHeight < h1 + h2 + h3)
             {
                 enemy.GetComponent<EnemyAI>().SetHeight(3);
             }

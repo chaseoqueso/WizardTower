@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [HideInInspector] public int playerNumber = 0;
+
     private const float moveSpeed = 5;
     private const float pickupDistance = 2.5f;
     private const float shootCooldown = 0.5f;

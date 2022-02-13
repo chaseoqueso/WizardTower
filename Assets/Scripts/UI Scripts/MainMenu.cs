@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Playing game!");
         // TODO: Load Scene
-        // SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("CharacterSelect");
     }
 
     public void QuitGame()
