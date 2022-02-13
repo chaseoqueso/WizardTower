@@ -11,15 +11,15 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player1Only
+  - Player1Ignore
+  - Player2Only
+  - Player2Ignore
+  - Player3Only
+  - Player3Ignore
+  - Player4Only
+  - Player4Ignore
   - 
   - 
   - 
