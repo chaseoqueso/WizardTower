@@ -700,6 +700,8 @@ MonoBehaviour:
   - {fileID: 2743912028676631521}
   - {fileID: 6648664085502985747}
   - {fileID: 3395393922872702055}
+  playerAnimator: {fileID: 8733272413811980064}
+  firstPersonAnimator: {fileID: 8003960361307446170}
 --- !u!1 &6648664085502985747
 GameObject:
   m_ObjectHideFlags: 0
