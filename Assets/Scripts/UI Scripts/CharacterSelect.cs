@@ -13,6 +13,7 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] private List<CharSelectPanel> playerPanels = new List<CharSelectPanel>();
 
     public List<Button> wizardButtons = new List<Button>();
+    
     [SerializeField] private Button startButton;
 
     void Awake()
