@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
     public bool shoot { get; private set; }
     public Vector2 moveInput;
     public Vector2 lookInput;
+    private Vector2 mouseLook;
+    private Vector2 controllerLook;
     private Vector2 mousePrevious;
     private Vector2 lookPrevious;
 
@@ -50,6 +52,11 @@ public class InputManager : MonoBehaviour
                 playerSelectedWizard = EventSystem.current.currentSelectedGameObject.GetComponent<CharSelectWizardButton>();
             }
         }
+
+        lookInput = mouseLook;
+        if(lookInput == Vector2.zero)
+            lookInput = controllerLook;
+
     }
 
     private void LateUpdate()
@@ -58,7 +65,7 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        lookInput = Vector2.zero;
+        mouseLook = Vector2.zero;
         wizardInteract = false;
         shoot = false;
     }
@@ -166,7 +173,7 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        lookInput = input.Get<Vector2>();
+        controllerLook = input.Get<Vector2>();
     }
 
     // LOOKING (both up and down) if you are on the keyboard control scheme
@@ -180,7 +187,7 @@ public class InputManager : MonoBehaviour
         Vector2 mouse = input.Get<Vector2>();
         if (mousePrevious != Vector2.zero)
         {
-            lookInput = ((mouse - mousePrevious) + lookPrevious)/2;
+            mouseLook = ((mouse - mousePrevious) + lookPrevious)/2;
         }
         mousePrevious = mouse;
         lookPrevious = mouse - mousePrevious;
