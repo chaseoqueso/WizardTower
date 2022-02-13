@@ -20,10 +20,19 @@ public class CharSelectPanel : MonoBehaviour
 
     [SerializeField] private Image wizardIcon;
     [SerializeField] private TMP_Text readyText;
+    [SerializeField] private TMP_Text playerNumText;
+    [SerializeField] private GameObject joinOverlay;
+
+    [HideInInspector] public bool playerIsJoining = false;
 
     public int PlayerNum()
     {
         return playerNum;
+    }
+
+    public void ToggleJoinOverlay(bool set)
+    {
+        joinOverlay.gameObject.SetActive(set);
     }
 
     public void PlayerReady(CharSelectWizardButton wizardButton)
@@ -40,6 +49,12 @@ public class CharSelectPanel : MonoBehaviour
         wizardIcon.SetNativeSize();
 
         SetPlayerModel(wizardButton.WizardType());
+
+        SetPlayerJoiningUI(false);
+
+        if(GameManager.instance.playerInputManager.playerCount < 4){
+            GameManager.instance.EnableJoining(true);
+        }
     }
 
     public void PlayerCanceled()
@@ -47,10 +62,23 @@ public class CharSelectPanel : MonoBehaviour
         ToggleReadyStatus(false);
         CharacterSelect.instance.readyPlayers.Remove(playerNum);
 
-        // TEMP
-        wizardIcon.sprite = null;
+        SetPlayerJoiningUI(true);
 
         CharacterSelect.instance.CanStartGame(false);
+    }
+
+    public void SetPlayerJoiningUI(bool set)
+    {
+        if(set){
+            // TEMP
+            wizardIcon.sprite = null;
+            readyText.gameObject.SetActive(false);
+            playerNumText.color = Color.yellow;
+        }
+        else{
+            readyText.gameObject.SetActive(true);
+            playerNumText.color = Color.white;
+        }
     }
 
     private void ToggleReadyStatus(bool set)

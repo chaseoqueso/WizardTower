@@ -70,6 +70,15 @@ public class CharacterSelect : MonoBehaviour
 
     public void PlayerCanceled(int playerNum, CharSelectWizardButton wizardButton)
     {
+        foreach(CharSelectPanel panel in playerPanels){
+            // If any player is currently joining, don't let a player cancel their selection
+            if(panel.playerIsJoining){
+                return;
+            }
+        }
+
+        GameManager.instance.playerDatabase[playerNum].GetComponent<InputManager>().playerIsJoining = true;
+
         wizardButton.ToggleButtonInteractability(true);
 
         foreach(CharSelectPanel panel in playerPanels){
@@ -77,6 +86,16 @@ public class CharacterSelect : MonoBehaviour
                 panel.PlayerCanceled();
             }
         }
+    }
+
+    public CharSelectPanel GetPanelFromPlayerNum(int num)
+    {
+        foreach(CharSelectPanel panel in playerPanels){
+            if(panel.PlayerNum() == num){
+                return panel;
+            }
+        }
+        return null;
     }
 
     public Button GetNextInteractableWizardIcon()

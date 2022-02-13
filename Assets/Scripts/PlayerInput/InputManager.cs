@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     private Vector2 lookPrevious;
 
     public bool inCharSelect;
+    public bool playerIsJoining = true;
 
     public List<GameObject> wizardButtons = new List<GameObject>();
     public CharSelectWizardButton playerSelectedWizard = null;
@@ -44,12 +45,12 @@ public class InputManager : MonoBehaviour
         }      
     }
 
-    void Update()
-    {
-        if(inCharSelect){
-            GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
-        }
-    }
+    // void Update()
+    // {
+    //     if(inCharSelect){
+    //         GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
+    //     }
+    // }
 
     private void LateUpdate()
     {
@@ -205,7 +206,7 @@ public class InputManager : MonoBehaviour
         Debug.Log("Player " + GetComponent<Player>().playerNumber);
 
         // If we're on the character select screen
-        if(inCharSelect){
+        if(inCharSelect && playerIsJoining){
             // If the currently selected button is a wizard button
             GameObject currentSelectedButton = EventSystem.current.currentSelectedGameObject;
             if(wizardButtons.Contains(currentSelectedButton)){
@@ -232,20 +233,25 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    // If you click a submit button to join, it automatically picks that first character for you
     public void OnSubmit(InputValue input)
     {
-        if( inCharSelect && playerSelectedWizard ){
+        if( inCharSelect && playerSelectedWizard && playerIsJoining ){
             CharacterSelect.instance.PlayerReady(gameObject.GetComponent<Player>().playerNumber, playerSelectedWizard);
             WizardGridUIAlert.instance.ToggleBorderActive(false, playerSelectedWizard.WizardType(), GetComponent<Player>().playerNumber.ToString());
+            playerIsJoining = false;
         }
     }
 
+    // No longer working
     public void OnCancel(InputValue input)
     {
         if(inCharSelect && playerSelectedWizard){
             CharacterSelect.instance.PlayerCanceled(gameObject.GetComponent<Player>().playerNumber, playerSelectedWizard);
         }
-        SelectNextInteractableIcon();
+        if(playerIsJoining && playerSelectedWizard == null){
+            SelectNextInteractableIcon();
+        }
     }
 
     public void SelectNextInteractableIcon()
@@ -267,5 +273,3 @@ public class InputManager : MonoBehaviour
         return false;
     }
 }
-
-// TODO: Set inCharSelect = false when you start the game or return to main menu

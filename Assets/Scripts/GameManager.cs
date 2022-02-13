@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
     public void OnPlayerJoined()
     {
         Debug.Log("Player joined! Num players: " + playerInputManager.playerCount);
+        GameManager.instance.EnableJoining(false);
 
         // Find all players in scene
         Player[] players = FindObjectsOfType<Player>();
@@ -70,17 +72,21 @@ public class GameManager : MonoBehaviour
                 // Set this player to a child of the Game Manager
                 p.transform.parent = transform;
 
-                // Enable UI alert (done in InputManager Start now?)
-                // p.GetComponent<InputManager>().playerSelectedWizard = CharacterSelect.instance.GetNextInteractableWizardIcon().GetComponent<CharSelectWizardButton>();
-                // WizardGridUIAlert.instance.ToggleBorderActive(true, p.GetComponent<InputManager>().playerSelectedWizard.WizardType(), p.playerNumber.ToString());
+                CharSelectPanel panel = CharacterSelect.instance.GetPanelFromPlayerNum(p.playerNumber);
+                panel.playerIsJoining = true;
+                panel.ToggleJoinOverlay(false);
+                panel.SetPlayerJoiningUI(true);
+
+                // p.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+                // FindObjectOfType<InputSystemUIInputModule>().actionsAsset = p.GetComponent<PlayerInput>().actions;
 
                 break;
             }
         }
 
-        if(playerInputManager.playerCount == 4){
-            EnableJoining(false);
-        }
+        // if(playerInputManager.playerCount == 4){
+        //     EnableJoining(false);
+        // }
     }
 
     // Make sure this doesn't cause problems with CharSelectPanel PlayerCanceled()
