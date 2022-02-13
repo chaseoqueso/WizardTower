@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public float timeSinceStart;
 
+    public Dictionary<int,GameObject> players {get; private set;}
+
     void Awake()
     {
         if( instance ){
@@ -19,12 +21,18 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
+
+        players = new Dictionary<int, GameObject>();
     }
+
+    
 
     public void GameOver()
     {
         // Open game over UI
 
         Debug.Log("Game over!");
+
+        players.Clear();
     }
 }
