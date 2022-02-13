@@ -10,8 +10,9 @@ public class CharacterSelect : MonoBehaviour
     public static CharacterSelect instance;
 
     public HashSet<int> readyPlayers = new HashSet<int>();
-    [SerializeField] List<CharSelectPanel> playerPanels = new List<CharSelectPanel>();
+    [SerializeField] private List<CharSelectPanel> playerPanels = new List<CharSelectPanel>();
 
+    public List<Button> wizardButtons = new List<Button>();
     [SerializeField] private Button startButton;
 
     void Awake()
@@ -44,22 +45,33 @@ public class CharacterSelect : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Starting game!");
-        // TODO: SceneManager.LoadScene("");
+        // CHASE UNCOMMENT THIS THIS (add the scene to the build settings and then add the string name here)
+        // SceneManager.LoadScene("");
 
-        // TODO: Once in the new scene, move Player objects to no longer be children of the Game Manager
+        GameManager.instance.OnGameStart();
     }
 
-    public void PlayerReady(int playerNum)
+    public void BackButton()
     {
+        Debug.Log("Returning to Main Menu!");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void PlayerReady(int playerNum, CharSelectWizardButton wizardButton)
+    {
+        wizardButton.ToggleButtonInteractability(false);
+
         foreach(CharSelectPanel panel in playerPanels){
             if(panel.PlayerNum() == playerNum){
-                panel.PlayerReady();
+                panel.PlayerReady(wizardButton);
             }
         }
     }
 
-    public void PlayerCanceled(int playerNum)
+    public void PlayerCanceled(int playerNum, CharSelectWizardButton wizardButton)
     {
+        wizardButton.ToggleButtonInteractability(true);
+
         foreach(CharSelectPanel panel in playerPanels){
             if(panel.PlayerNum() == playerNum){
                 panel.PlayerCanceled();

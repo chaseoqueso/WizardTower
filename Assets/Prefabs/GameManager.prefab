@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSinceStart: 0
+  modelPrefabs:
+  - {fileID: 6559992720973269286, guid: afdb6d9b4ae460e4e878ca40f91b8037, type: 3}
+  - {fileID: 396534220959802725, guid: a6c9d1ef8730ea64a83c2483a51d98cc, type: 3}
+  - {fileID: 467507431690832812, guid: fc2a798fe09a37a40b259f029b21212a, type: 3}
+  - {fileID: 5832440849323159616, guid: 043a3073c1288b147b46764fe2d2220f, type: 3}
 --- !u!114 &1358148545506300780
 MonoBehaviour:
   m_ObjectHideFlags: 0

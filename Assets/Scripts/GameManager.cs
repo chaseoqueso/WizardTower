@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> modelPrefabs = new List<GameObject>();
     public Dictionary<WizardType, GameObject> wizardModelDatabase {get; private set;}
+
     public PlayerInputManager playerInputManager {get; private set;}
     public Dictionary<int,GameObject> playerDatabase {get; private set;}
 
@@ -91,6 +92,15 @@ public class GameManager : MonoBehaviour
         }
         else{
             playerInputManager.DisableJoining();
+        }
+    }
+
+    public void OnGameStart()
+    {
+        foreach(GameObject player in playerDatabase.Values){
+            // TODO: Once in the new scene, move Player objects to no longer be children of the Game Manager
+
+            player.GetComponent<InputManager>().inCharSelect = false;
         }
     }
 

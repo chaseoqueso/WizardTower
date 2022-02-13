@@ -6,11 +6,11 @@ using TMPro;
 using UnityEngine.InputSystem;
 
 public enum WizardType{
-    yellowRound,
     redCone,
-    blueSquare,
     greenDiamond,
-
+    yellowRound,
+    blueSquare,
+    
     enumSize
 }
 
@@ -18,7 +18,7 @@ public class CharSelectPanel : MonoBehaviour
 {
     [SerializeField] private int playerNum;
 
-    [SerializeField] private Button submitButton;
+    [SerializeField] private Image wizardIcon;
     [SerializeField] private TMP_Text readyText;
 
     public int PlayerNum()
@@ -26,7 +26,7 @@ public class CharSelectPanel : MonoBehaviour
         return playerNum;
     }
 
-    public void PlayerReady()
+    public void PlayerReady(CharSelectWizardButton wizardButton)
     {
         ToggleReadyStatus(true);
         CharacterSelect.instance.readyPlayers.Add(playerNum);
@@ -35,9 +35,11 @@ public class CharSelectPanel : MonoBehaviour
             CharacterSelect.instance.CanStartGame(true);
         }
 
-        // TODO: Get the type from the button!!! (below is temp)
-        WizardType type = WizardType.blueSquare;
-        SetPlayerModel(type);
+        // TODO: below is TEMP (will later be set in the SetPlayerModel function)
+        wizardIcon.sprite = wizardButton.gameObject.GetComponent<Image>().sprite;    
+        wizardIcon.SetNativeSize();
+
+        SetPlayerModel(wizardButton.WizardType());
     }
 
     public void PlayerCanceled()
@@ -45,13 +47,15 @@ public class CharSelectPanel : MonoBehaviour
         ToggleReadyStatus(false);
         CharacterSelect.instance.readyPlayers.Remove(playerNum);
 
+        // TEMP
+        wizardIcon.sprite = null;
+
         CharacterSelect.instance.CanStartGame(false);
     }
 
     private void ToggleReadyStatus(bool set)
     {
         readyText.gameObject.SetActive(set);
-        submitButton.gameObject.SetActive(!set);
     }
 
     public void SetPlayerModel(WizardType type)
@@ -64,5 +68,8 @@ public class CharSelectPanel : MonoBehaviour
 
         // Instantiate the model as a child of the player
         Instantiate(model, player.transform);
+
+        // TODO: Set the UI to reflect that character selection
+
     }
 }
