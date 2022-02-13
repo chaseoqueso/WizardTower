@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
     public bool inCharSelect;
 
     public List<GameObject> wizardButtons = new List<GameObject>();
-    private CharSelectWizardButton playerSelectedWizard = null;
+    public CharSelectWizardButton playerSelectedWizard = null;
 
     void Start()
     {
@@ -30,6 +30,8 @@ public class InputManager : MonoBehaviour
         controls.FindAction("MoveForward").canceled += x => OnMoveForwardCanceled();
         controls.FindAction("MoveBack").canceled += x => OnMoveBackCanceled();
 
+        GetComponent<PlayerInput>().uiInputModule = FindObjectOfType<InputSystemUIInputModule>();
+
         if(CharacterSelect.instance){
             inCharSelect = true;
             CharacterSelect.instance.wizardButtons[0].Select();
@@ -37,18 +39,15 @@ public class InputManager : MonoBehaviour
             foreach(Button b in CharacterSelect.instance.wizardButtons){
                 wizardButtons.Add(b.gameObject);
             }
-        }
 
-        GetComponent<PlayerInput>().uiInputModule = FindObjectOfType<InputSystemUIInputModule>();
+            SelectNextInteractableIcon();
+        }      
     }
 
     void Update()
     {
-        // If we're on the character select screen
         if(inCharSelect){
-            if(wizardButtons.Contains(EventSystem.current.currentSelectedGameObject)){
-                playerSelectedWizard = EventSystem.current.currentSelectedGameObject.GetComponent<CharSelectWizardButton>();
-            }
+            GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
         }
     }
 
@@ -201,15 +200,43 @@ public class InputManager : MonoBehaviour
     }
 
     // UI Input Stuff
+    public void OnNavigate(InputValue input)
+    {
+        Debug.Log("Player " + GetComponent<Player>().playerNumber);
+
+        // If we're on the character select screen
+        if(inCharSelect){
+            // If the currently selected button is a wizard button
+            GameObject currentSelectedButton = EventSystem.current.currentSelectedGameObject;
+            if(wizardButtons.Contains(currentSelectedButton)){
+
+                // If a thing is currently selected, remove the alert
+                if(playerSelectedWizard != null){
+                    WizardGridUIAlert.instance.ToggleBorderActive(false, playerSelectedWizard.WizardType(), GetComponent<Player>().playerNumber.ToString());
+                }
+
+                playerSelectedWizard = currentSelectedButton.GetComponent<CharSelectWizardButton>();
+                WizardGridUIAlert.instance.ToggleBorderActive(true, playerSelectedWizard.WizardType(), GetComponent<Player>().playerNumber.ToString());
+
+                // If no other players have this selected, select it
+                // if(!WizardIsAlreadySelectedByAnotherPlayer(currentSelectedButton.GetComponent<CharSelectWizardButton>())){
+                //     playerSelectedWizard = currentSelectedButton.GetComponent<CharSelectWizardButton>();
+                //     WizardGridUIAlert.instance.ToggleBorderActive(true, playerSelectedWizard.WizardType(), GetComponent<Player>().playerNumber.ToString());
+                // }
+                // else{   // If someone else has it selected, move on to the next one
+                //     SelectNextInteractableIcon();
+                // }
+
+                Debug.Log("Player " + GetComponent<Player>().playerNumber + " Wizard Type: " + playerSelectedWizard.WizardType());
+            }
+        }
+    }
+
     public void OnSubmit(InputValue input)
     {
-        // if we're on the character select screen
-        // and THIS PLAYER has a button selected (how do we set THIS value tho???)
-        // and they CLICK
-        // THEN call Wizard Selected, giving it the info about THIS CHARACTER who selected the wizard
-
         if( inCharSelect && playerSelectedWizard ){
             CharacterSelect.instance.PlayerReady(gameObject.GetComponent<Player>().playerNumber, playerSelectedWizard);
+            WizardGridUIAlert.instance.ToggleBorderActive(false, playerSelectedWizard.WizardType(), GetComponent<Player>().playerNumber.ToString());
         }
     }
 
@@ -218,14 +245,26 @@ public class InputManager : MonoBehaviour
         if(inCharSelect && playerSelectedWizard){
             CharacterSelect.instance.PlayerCanceled(gameObject.GetComponent<Player>().playerNumber, playerSelectedWizard);
         }
-        playerSelectedWizard = null;
+        SelectNextInteractableIcon();
+    }
 
-        foreach(Button b in CharacterSelect.instance.wizardButtons){
-            if(b.interactable){
-                b.Select();
-                return;
+    public void SelectNextInteractableIcon()
+    {
+        Button b = CharacterSelect.instance.GetNextInteractableWizardIcon();
+        b.Select();
+        playerSelectedWizard = b.GetComponent<CharSelectWizardButton>();
+        WizardGridUIAlert.instance.ToggleBorderActive(true, playerSelectedWizard.WizardType(), GetComponent<Player>().playerNumber.ToString());
+    }
+
+    // Not working
+    public bool WizardIsAlreadySelectedByAnotherPlayer(CharSelectWizardButton wizardButton)
+    {
+        foreach(InputManager playerInput in FindObjectsOfType<InputManager>()){
+            if( playerInput.playerSelectedWizard != null && playerInput.playerSelectedWizard == wizardButton ){
+                return true;
             }
         }
+        return false;
     }
 }
 

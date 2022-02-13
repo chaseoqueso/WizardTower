@@ -78,4 +78,14 @@ public class CharacterSelect : MonoBehaviour
             }
         }
     }
+
+    public Button GetNextInteractableWizardIcon()
+    {
+        foreach(Button b in wizardButtons){
+            if(b.interactable){
+                return b;
+            }
+        }
+        return null;
+    }
 }

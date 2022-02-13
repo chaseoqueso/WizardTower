@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1891894597553032997}
-  - component: {fileID: 96101449277576480}
-  - component: {fileID: 6495881516351616404}
+  - component: {fileID: 1484390923795149987}
+  - component: {fileID: 5010890949624269927}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &96101449277576480
+--- !u!114 &1484390923795149987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &6495881516351616404
+--- !u!114 &5010890949624269927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,5 +72,5 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 8389933079209394231, guid: 05012ad681977e6439e422c700884a0a, type: 3}
   m_TrackedDevicePositionAction: {fileID: -8491037949630582569, guid: 05012ad681977e6439e422c700884a0a, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 4692894227267413359, guid: 05012ad681977e6439e422c700884a0a, type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0

@@ -58,14 +58,23 @@ public class GameManager : MonoBehaviour
 
         // Find all players in scene
         Player[] players = FindObjectsOfType<Player>();
+
         // Loop through to find the new player
         foreach(Player p in players){
+
             // If the player number has not yet been set, equals default 0 -> set new values
             if(p.playerNumber == 0){
                 p.playerNumber = playerInputManager.playerCount;
                 playerDatabase[p.playerNumber] = p.gameObject;
+
                 // Set this player to a child of the Game Manager
                 p.transform.parent = transform;
+
+                // Enable UI alert (done in InputManager Start now?)
+                // p.GetComponent<InputManager>().playerSelectedWizard = CharacterSelect.instance.GetNextInteractableWizardIcon().GetComponent<CharSelectWizardButton>();
+                // WizardGridUIAlert.instance.ToggleBorderActive(true, p.GetComponent<InputManager>().playerSelectedWizard.WizardType(), p.playerNumber.ToString());
+
+                break;
             }
         }
 
