@@ -32,53 +32,37 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void SetHeight(int height)
+
+    public void Initialize(int height, int color)
     {
-        if (height == 1)
-        {
-            transform.GetChild(0).gameObject.SetActive(true);
-            SetColor(transform.GetChild(0).gameObject);
-        }
-        else if (height == 2)
-        {
-            transform.GetChild(1).gameObject.SetActive(true);
-            SetColor(transform.GetChild(1).gameObject);
-        }
-        else if (height == 3)
-        {
-            transform.GetChild(2).gameObject.SetActive(true);
-            SetColor(transform.GetChild(2).gameObject);
-        }
-        else if (height == 4)
-        {
-            transform.GetChild(3).gameObject.SetActive(true);
-            SetColor(transform.GetChild(3).gameObject);
-        }
+        GameObject childObject = transform.GetChild(height ).gameObject;
+        childObject.SetActive(true);
+        SetColor(childObject, color);
     }
-    public void SetColor(GameObject test)
+
+    public void SetColor(GameObject childObject, int color)
     {
-        int color = Random.Range(1, 5);
         switch(color)
         {
-            case 1:
+            case 0:
                 //blue
-                test.GetComponent<MeshRenderer>().material = blue;
-                test.tag = "Blue";
+                childObject.GetComponent<MeshRenderer>().material = blue;
+                childObject.tag = "Blue";
+                break;
+            case 1:
+                //green
+                childObject.GetComponent<MeshRenderer>().material = green;
+                childObject.tag = "Green";
                 break;
             case 2:
-                //green
-                test.GetComponent<MeshRenderer>().material = green;
-                test.tag = "Green";
+                //red
+                childObject.GetComponent<MeshRenderer>().material = red;
+                childObject.tag = "Red";
                 break;
             case 3:
-                //red
-                test.GetComponent<MeshRenderer>().material = red;
-                test.tag = "Red";
-                break;
-            case 4:
                 //yellow
-                test.GetComponent<MeshRenderer>().material = yellow;
-                test.tag = "Yellow";
+                childObject.GetComponent<MeshRenderer>().material = yellow;
+                childObject.tag = "Yellow";
                 break;
         }
     }

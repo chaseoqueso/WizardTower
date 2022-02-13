@@ -223,6 +223,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1525953412623087992, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: spawnDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525953412623087992, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: spawnCooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1525953412623087993, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
       propertyPath: m_RootOrder
       value: 1
