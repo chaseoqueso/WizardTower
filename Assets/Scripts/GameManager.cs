@@ -18,7 +18,7 @@ public enum WizardType{
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    public float timeSinceLevel;
     [HideInInspector] public float timeSinceStart;
 
     [SerializeField] private List<GameObject> modelPrefabs = new List<GameObject>();
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerInputManager playerInputManager {get; private set;}
     public Dictionary<int,GameObject> playerDatabase {get; private set;}
-
+    
     void Awake()
     {
         if( instance ){
