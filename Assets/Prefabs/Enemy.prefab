@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8081769426929890165}
   - component: {fileID: 8081769426929890164}
   - component: {fileID: 8081769426929890155}
-  m_Layer: 0
+  - component: {fileID: 6962114866236747800}
+  m_Layer: 6
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,6 +96,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6962114866236747800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081769426929890153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82179e475dc762541a8c8ca7e49c4111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8081769427415627288
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +120,8 @@ GameObject:
   - component: {fileID: 8081769427415627300}
   - component: {fileID: 8081769427415627291}
   - component: {fileID: 8081769427415627290}
-  m_Layer: 0
+  - component: {fileID: 173252157931696783}
+  m_Layer: 6
   m_Name: Sphere (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,6 +204,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &173252157931696783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081769427415627288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82179e475dc762541a8c8ca7e49c4111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8081769427952071612
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +228,7 @@ GameObject:
   - component: {fileID: 8081769427952071614}
   - component: {fileID: 912428028}
   - component: {fileID: 912428027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,6 +266,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
+  blue: {fileID: 2100000, guid: 1aa40eed420e375478aea06d8e1cd01c, type: 2}
+  green: {fileID: 2100000, guid: 7c3898a2c7bc8bd48aa88461be22614a, type: 2}
+  red: {fileID: 2100000, guid: 6472d021ef29c644eabeddc77e204198, type: 2}
+  yellow: {fileID: 2100000, guid: 09ea9e4ec0268584f9f0936d23acb2cc, type: 2}
   Tower: {fileID: 0}
 --- !u!54 &912428028
 Rigidbody:
@@ -283,7 +313,8 @@ GameObject:
   - component: {fileID: 8081769428153333676}
   - component: {fileID: 8081769428153333667}
   - component: {fileID: 8081769428153333666}
-  m_Layer: 0
+  - component: {fileID: 2650752954754395319}
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,6 +397,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2650752954754395319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081769428153333664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82179e475dc762541a8c8ca7e49c4111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8081769428238441937
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +421,8 @@ GameObject:
   - component: {fileID: 8081769428238441949}
   - component: {fileID: 8081769428238441948}
   - component: {fileID: 8081769428238441939}
-  m_Layer: 0
+  - component: {fileID: 1245427066717795739}
+  m_Layer: 6
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,3 +505,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1245427066717795739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081769428238441937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82179e475dc762541a8c8ca7e49c4111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
