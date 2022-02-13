@@ -12,17 +12,19 @@ public class EnemyAI : MonoBehaviour
     public Material red;
     public Material yellow;
 
-    public Transform Tower;
+    public Transform tower;
     // Start is called before the first frame update
     void Start()
     {
-        Tower = GameObject.Find("WizardTowerPillar").transform;
+        tower = GameObject.Find("WizardTowerPillar").transform;
+        transform.forward = tower.transform.position - transform.position;
+        transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Tower.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, tower.position, speed * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -46,22 +48,22 @@ public class EnemyAI : MonoBehaviour
         {
             case 0:
                 //blue
-                childObject.GetComponent<MeshRenderer>().material = blue;
+                //childObject.GetComponent<MeshRenderer>().material = blue;
                 childObject.tag = "Blue";
                 break;
             case 1:
                 //green
-                childObject.GetComponent<MeshRenderer>().material = green;
+                //childObject.GetComponent<MeshRenderer>().material = green;
                 childObject.tag = "Green";
                 break;
             case 2:
                 //red
-                childObject.GetComponent<MeshRenderer>().material = red;
+                //childObject.GetComponent<MeshRenderer>().material = red;
                 childObject.tag = "Red";
                 break;
             case 3:
                 //yellow
-                childObject.GetComponent<MeshRenderer>().material = yellow;
+                //childObject.GetComponent<MeshRenderer>().material = yellow;
                 childObject.tag = "Yellow";
                 break;
         }
