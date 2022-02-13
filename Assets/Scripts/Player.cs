@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private const float moveSpeed = 5;
     private const float pickupDistance = 2.5f;
     private const float shootCooldown = 0.5f;
+    private const float accel = 0.01f;
 
     public bool enableMovement;
     public bool enableLook;
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     private new Camera camera;
     private Vector3 moveInput;
     private Vector2 lookInput;
+    private Vector3 currentVelocity;
 
     void Start()
     {
@@ -63,7 +65,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(input.shoot && !isOnCooldown)
+        if(input.shoot && !isOnCooldown && liftRoutine == null)
         {
             GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.rotation * new Vector3(0, 1.5f, 1f), Quaternion.identity);
             projectile.GetComponent<Projectile>().direction = transform.forward;
@@ -75,7 +77,54 @@ public class Player : MonoBehaviour
     {
         if(enableMovement)
         {
-            controller.Move(Quaternion.LookRotation(transform.forward) * moveInput * moveSpeed * Time.fixedDeltaTime);
+            Vector3 targetVelocity = Quaternion.LookRotation(transform.forward) * moveInput * moveSpeed * Time.fixedDeltaTime;
+
+            if (currentVelocity.x < targetVelocity.x)
+            {
+                if(currentVelocity.x + accel > targetVelocity.x)
+                    currentVelocity.x = targetVelocity.x;
+                else
+                    currentVelocity.x += accel;
+            }
+
+            if (currentVelocity.x > targetVelocity.x)
+            {
+                if (currentVelocity.x - accel < targetVelocity.x)
+                    currentVelocity.x = targetVelocity.x;
+                else
+                    currentVelocity.x -= accel;
+            }
+
+            if(Mathf.Abs(currentVelocity.x) < accel/2)
+                currentVelocity.x = 0;
+
+            if (currentVelocity.z < targetVelocity.z)
+            {
+                if (currentVelocity.z + accel > targetVelocity.z)
+                    currentVelocity.z = targetVelocity.z;
+                else
+                    currentVelocity.z += accel;
+            }
+
+            if (currentVelocity.z > targetVelocity.z)
+            {
+                if (currentVelocity.z - accel < targetVelocity.z)
+                    currentVelocity.z = targetVelocity.z;
+                else
+                    currentVelocity.z -= accel;
+            }
+
+            if (Mathf.Abs(currentVelocity.z) < accel / 2)
+                currentVelocity.z = 0;
+
+            controller.Move(currentVelocity);
+
+            Debug.Log("Target: " + targetVelocity);
+            Debug.Log("Current: " + currentVelocity);
+        }
+        else
+        {
+            currentVelocity = Vector3.zero;
         }
     }
 
