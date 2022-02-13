@@ -296,15 +296,15 @@
             "actions": [
                 {
                     "name": "Navigate",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "80db74da-5080-4778-acdf-157bf5be258f",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "Submit",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "77415043-e860-4247-9a9b-f330c0cbf338",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -312,7 +312,7 @@
                 },
                 {
                     "name": "Cancel",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "66bf5ef2-73da-4ed8-be6b-9eb9b727b578",
                     "expectedControlType": "Button",
                     "processors": "",

@@ -46,7 +46,7 @@ public class CharacterSelect : MonoBehaviour
     {
         Debug.Log("Starting game!");
         // CHASE UNCOMMENT THIS THIS (add the scene to the build settings and then add the string name here)
-        // SceneManager.LoadScene("");
+        SceneManager.LoadScene("GameScene");
 
         GameManager.instance.OnGameStart();
     }
@@ -70,6 +70,15 @@ public class CharacterSelect : MonoBehaviour
 
     public void PlayerCanceled(int playerNum, CharSelectWizardButton wizardButton)
     {
+        foreach(CharSelectPanel panel in playerPanels){
+            // If any player is currently joining, don't let a player cancel their selection
+            if(panel.playerIsJoining){
+                return;
+            }
+        }
+
+        GameManager.instance.playerDatabase[playerNum].GetComponent<InputManager>().playerIsJoining = true;
+
         wizardButton.ToggleButtonInteractability(true);
 
         foreach(CharSelectPanel panel in playerPanels){
@@ -77,5 +86,25 @@ public class CharacterSelect : MonoBehaviour
                 panel.PlayerCanceled();
             }
         }
+    }
+
+    public CharSelectPanel GetPanelFromPlayerNum(int num)
+    {
+        foreach(CharSelectPanel panel in playerPanels){
+            if(panel.PlayerNum() == num){
+                return panel;
+            }
+        }
+        return null;
+    }
+
+    public Button GetNextInteractableWizardIcon()
+    {
+        foreach(Button b in wizardButtons){
+            if(b.interactable){
+                return b;
+            }
+        }
+        return null;
     }
 }
