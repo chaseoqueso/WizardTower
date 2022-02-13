@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065969279652347871}
   - component: {fileID: -6296685009164101745}
+  - component: {fileID: 812438425039128161}
   m_Layer: 14
   m_Name: DiamondWiz
   m_TagString: Untagged
@@ -51,6 +52,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &812438425039128161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396534220959802725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f43722bd5f92d541836761d3d10c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisPlayerOnly:
+  - {fileID: 5348625681693755626}
+  - {fileID: 8278370472771271747}
+  - {fileID: 2291104355804842008}
+  - {fileID: 2633391240746443412}
+  thisPlayerIgnore:
+  - {fileID: 2032680398882610359}
+  - {fileID: 2660788040761501726}
+  - {fileID: 5315384388407942213}
+  - {fileID: 8251726826146002633}
 --- !u!1 &2032680398882610359
 GameObject:
   m_ObjectHideFlags: 0

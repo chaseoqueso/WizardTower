@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
+public enum WizardType{
+    redCone,
+    greenDiamond,
+    yellowRound,
+    blueSquare,
+    
+    enumSize
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -97,10 +106,11 @@ public class GameManager : MonoBehaviour
 
     public void OnGameStart()
     {
-        foreach(GameObject player in playerDatabase.Values){
-            // TODO: Once in the new scene, move Player objects to no longer be children of the Game Manager
-
+        foreach(KeyValuePair<int, GameObject> entry in playerDatabase){
+            GameObject player = entry.Value;
+            player.transform.parent = null;
             player.GetComponent<InputManager>().inCharSelect = false;
+            player.GetComponent<Player>().Initialize(entry.Key);
         }
     }
 

@@ -665,6 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6609928149802298106}
   - component: {fileID: -5640776022448377320}
+  - component: {fileID: 5513872915567328816}
   m_Layer: 10
   m_Name: SquareWiz
   m_TagString: Untagged
@@ -707,6 +708,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5513872915567328816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832440849323159616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f43722bd5f92d541836761d3d10c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisPlayerOnly:
+  - {fileID: 866124852071620978}
+  - {fileID: 654560195907796737}
+  - {fileID: 5363970377318149783}
+  - {fileID: 1076009466421526948}
+  - {fileID: 5021249991345727669}
+  thisPlayerIgnore:
+  - {fileID: 2953531293607759092}
+  - {fileID: 3309422115791426183}
+  - {fileID: 7964822948016309009}
+  - {fileID: 3032851154013989922}
+  - {fileID: 7014086650589873459}
 --- !u!1 &7014086650589873459
 GameObject:
   m_ObjectHideFlags: 0

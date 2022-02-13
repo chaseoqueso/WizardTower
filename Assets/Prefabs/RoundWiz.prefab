@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 952294874726125846}
   - component: {fileID: 6504743000332045211}
+  - component: {fileID: 753130201531086238}
   m_Layer: 12
   m_Name: RoundWiz
   m_TagString: Untagged
@@ -52,6 +53,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &753130201531086238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467507431690832812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f43722bd5f92d541836761d3d10c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisPlayerOnly:
+  - {fileID: 7988600810376079613}
+  - {fileID: 5209021310296656802}
+  - {fileID: 5553661359875191316}
+  - {fileID: 3294637906327026027}
+  - {fileID: 2881048972536934921}
+  thisPlayerIgnore:
+  - {fileID: 8890519512063551851}
+  - {fileID: 6770712547806612020}
+  - {fileID: 6390291134409307010}
+  - {fileID: 4036537811045693693}
+  - {fileID: 3623080747033064351}
 --- !u!1 &1423319935684086330
 GameObject:
   m_ObjectHideFlags: 0

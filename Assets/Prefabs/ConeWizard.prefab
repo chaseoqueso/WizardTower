@@ -633,6 +633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5783209280005133212}
   - component: {fileID: 8733272413811980064}
+  - component: {fileID: 5244765435798969170}
   m_Layer: 8
   m_Name: ConeWizard
   m_TagString: Untagged
@@ -675,6 +676,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5244765435798969170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6559992720973269286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f43722bd5f92d541836761d3d10c2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisPlayerOnly:
+  - {fileID: 6447211897178105887}
+  - {fileID: 4723571424375275424}
+  - {fileID: 3598721002696967808}
+  - {fileID: 5472034739199591203}
+  - {fileID: 5077487960844731557}
+  thisPlayerIgnore:
+  - {fileID: 7309769729164753527}
+  - {fileID: 7687136826101398613}
+  - {fileID: 2743912028676631521}
+  - {fileID: 6648664085502985747}
+  - {fileID: 3395393922872702055}
 --- !u!1 &6648664085502985747
 GameObject:
   m_ObjectHideFlags: 0
