@@ -37,7 +37,8 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveLeftCanceled()
     {
-        moveInput.x = 0;
+        if(moveInput.x < 0)
+            moveInput.x = 0;
     }
 
     public void OnMoveRight(InputValue input)
@@ -47,7 +48,8 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveRightCanceled()
     {
-        moveInput.x = 0;
+        if (moveInput.x > 0)
+            moveInput.x = 0;
     }
 
     public void OnMoveForward(InputValue input)
@@ -57,7 +59,8 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveForwardCanceled()
     {
-        moveInput.y = 0;
+        if (moveInput.y > 0)
+            moveInput.y = 0;
     }
 
     public void OnMoveBack(InputValue input)
@@ -67,7 +70,8 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveBackCanceled()
     {
-        moveInput.y = 0;
+        if (moveInput.y < 0)
+            moveInput.y = 0;
     }
 
     public void OnShoot(InputValue input)
