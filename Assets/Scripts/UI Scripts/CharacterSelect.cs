@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
+// TODO: SELECT CONTINUE BUTTON ONCE EVERYONE HAS JOINED (otherwise select UI stuff gets lost oof)
+
 public class CharacterSelect : MonoBehaviour
 {
     public static CharacterSelect instance;
