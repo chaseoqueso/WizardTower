@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     private int spawnListNum;
     private int randSpawn;
     private int lastRand;
+    private int randHeight;
     [SerializeField]
     private GameObject enemyPrefab;
     [SerializeField]
@@ -39,12 +40,32 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (spawnDelay <= 0)
         {
+            //random spawn loc
             randSpawn = Random.Range(0, spawnListNum);
             while (randSpawn == lastRand)
             {
                 randSpawn = Random.Range(0, spawnListNum);
             }
+            //random spawn height
             GameObject enemy = Instantiate(enemyPrefab, transform.GetChild(randSpawn));
+            randHeight = Random.Range(0, 100);
+            if(randHeight < 25)
+            {
+                enemy.GetComponent<EnemyAI>().SetHeight(1);
+            }
+            else if (randHeight < 55)
+            {
+                enemy.GetComponent<EnemyAI>().SetHeight(2);
+            }
+            else if (randHeight < 85)
+            {
+                enemy.GetComponent<EnemyAI>().SetHeight(3);
+            }
+            else
+            {
+                enemy.GetComponent<EnemyAI>().SetHeight(4);
+            }
+
             //enemy modification script
             spawnDelay = spawnCooldown;
             lastRand = randSpawn;
