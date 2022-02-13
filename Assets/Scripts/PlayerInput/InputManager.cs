@@ -105,4 +105,19 @@ public class InputManager : MonoBehaviour
     {
         // TODO (Jen)
     }
+
+    // UI Input Stuff
+    public void OnSubmit(InputValue input)
+    {
+        if( CharacterSelect.instance ){
+            CharacterSelect.instance.PlayerReady(gameObject.GetComponent<Player>().playerNumber);
+        }
+    }
+
+    public void OnCancel(InputValue input)
+    {
+        if(CharacterSelect.instance){
+            CharacterSelect.instance.PlayerCanceled(gameObject.GetComponent<Player>().playerNumber);
+        }
+    }
 }

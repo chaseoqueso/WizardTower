@@ -5,6 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
+public enum WizardType{
+    yellowRound,
+    redCone,
+    blueSquare,
+    greenDiamond,
+
+    enumSize
+}
+
 public class CharSelectPanel : MonoBehaviour
 {
     [SerializeField] private int playerNum;
@@ -26,7 +35,9 @@ public class CharSelectPanel : MonoBehaviour
             CharacterSelect.instance.CanStartGame(true);
         }
 
-        SetNewPlayerValues();
+        // TODO: Get the type from the button!!! (below is temp)
+        WizardType type = WizardType.blueSquare;
+        SetPlayerModel(type);
     }
 
     public void PlayerCanceled()
@@ -43,22 +54,15 @@ public class CharSelectPanel : MonoBehaviour
         submitButton.gameObject.SetActive(!set);
     }
 
-    public void OnSubmit(InputValue input)
+    public void SetPlayerModel(WizardType type)
     {
-        PlayerReady();
-    }
+        // Get the player
+        GameObject player = GameManager.instance.playerDatabase[playerNum];
 
-    public void OnCancel(InputValue input)
-    {
-        PlayerCanceled();
-    }
+        // Get the model prefab
+        GameObject model = GameManager.instance.GetWizardModelFromType(type);
 
-    public void SetNewPlayerValues()
-    {
-        // Get this player object somehow
-        
-
-        // Set the model
-        
+        // Instantiate the model as a child of the player
+        Instantiate(model, player.transform);
     }
 }
