@@ -76,7 +76,6 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(p1);
         //number changes
         spawnCooldown = 5f;
-        Debug.Log("p1 done");
         StartCoroutine(phase2());
     }
     IEnumerator phase2()
@@ -84,14 +83,12 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(p2);
         //number changes
         spawnCooldown = 4f;
-        Debug.Log("p2 done");
         StartCoroutine(phase3());
         
     }
     IEnumerator phase3()
     {
         yield return new WaitForSeconds(p3);
-        Debug.Log("p3 done");
         spawnCooldown = 3f;
         //number changes
 

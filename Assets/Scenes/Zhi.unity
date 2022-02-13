@@ -686,9 +686,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8081769427952071612, guid: c64a5d31861d1544fba8e4207ea09e6d, type: 3}
   spawnCooldown: 2
   spawnDelay: 2
-  p1: 3
-  p2: 3
-  p3: 3
+  p1: 60
+  p2: 60
+  p3: 60
 --- !u!1 &1619427854
 GameObject:
   m_ObjectHideFlags: 0
