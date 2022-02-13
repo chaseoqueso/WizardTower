@@ -26,9 +26,13 @@ public class EnemySpawner : MonoBehaviour
     private float p3 = 40f;
 
     // Height Probability
+    [SerializeField]
     private int h1 = 25;
+    [SerializeField]
     private int h2 = 30;
+    [SerializeField]
     private int h3 = 30;
+    [SerializeField]
     private int h4 = 15;
     // make sure these add up to 100
     // h4 is not actually used
