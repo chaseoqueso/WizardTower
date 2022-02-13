@@ -12,7 +12,11 @@ public class CharSelectPanel : MonoBehaviour
     [SerializeField] private Image wizardIcon;
     [SerializeField] private TMP_Text readyText;
     [SerializeField] private TMP_Text playerNumText;
+
     [SerializeField] private GameObject joinOverlay;
+    // Can get the text from the joinOverlay
+    // Set the text to a lighter color only for the NEXT player
+    // like if playerNum == gamemanager.numplayers + 1, set it to a lighter color kinda thing
 
     [HideInInspector] public bool playerIsJoining = false;
 
