@@ -5,15 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public enum WizardType{
-    redCone,
-    greenDiamond,
-    yellowRound,
-    blueSquare,
-    
-    enumSize
-}
-
 public class CharSelectPanel : MonoBehaviour
 {
     [SerializeField] private int playerNum;
@@ -90,6 +81,7 @@ public class CharSelectPanel : MonoBehaviour
     {
         // Get the player
         GameObject player = GameManager.instance.playerDatabase[playerNum];
+        player.GetComponent<Player>().wizardType = type;
 
         // Get the model prefab
         GameObject model = GameManager.instance.GetWizardModelFromType(type);

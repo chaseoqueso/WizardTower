@@ -46,7 +46,7 @@ public class CharacterSelect : MonoBehaviour
     {
         Debug.Log("Starting game!");
         // CHASE UNCOMMENT THIS THIS (add the scene to the build settings and then add the string name here)
-        // SceneManager.LoadScene("");
+        SceneManager.LoadScene("GameScene");
 
         GameManager.instance.OnGameStart();
     }
