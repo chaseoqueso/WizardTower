@@ -933,14 +933,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 912428028, guid: c64a5d31861d1544fba8e4207ea09e6d, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 912428028, guid: c64a5d31861d1544fba8e4207ea09e6d, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081769427952071612, guid: c64a5d31861d1544fba8e4207ea09e6d, type: 3}
       propertyPath: m_Name
       value: Enemy
