@@ -40,6 +40,10 @@ public class CharacterSelect : MonoBehaviour
         }
 
         startButton.interactable = set;
+
+        if(set){
+            startButton.Select();
+        }
     }
 
     // Called when you press CONTINUE
