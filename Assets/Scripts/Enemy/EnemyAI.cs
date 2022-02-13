@@ -12,17 +12,19 @@ public class EnemyAI : MonoBehaviour
     public Material red;
     public Material yellow;
 
-    public Transform Tower;
+    public Transform tower;
     // Start is called before the first frame update
     void Start()
     {
-        Tower = GameObject.Find("WizardTowerPillar").transform;
+        tower = GameObject.Find("WizardTowerPillar").transform;
+        transform.forward = tower.transform.position - transform.position;
+        transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Tower.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, tower.position, speed * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision collision)

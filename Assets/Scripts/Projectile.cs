@@ -22,10 +22,6 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            //deal damage to enemy
-        }
         Destroy(gameObject);
     }
 }
