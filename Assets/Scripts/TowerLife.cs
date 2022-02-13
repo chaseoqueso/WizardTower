@@ -22,6 +22,7 @@ public class TowerLife : MonoBehaviour
         // if tower collide with enemy
         if (collision.gameObject.layer == 6)
         {
+            Destroy(collision.gameObject);
             health--;
             Debug.Log("Took a Hit! Health = " + health);
             if (health == 0)

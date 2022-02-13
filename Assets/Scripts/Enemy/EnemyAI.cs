@@ -25,13 +25,7 @@ public class EnemyAI : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, Tower.position, speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "WizardTowerPillar")
-        {
-            Destroy(gameObject);
-        }
-    }
+
     public void SetHeight(int height)
     {
         if (height == 1)
