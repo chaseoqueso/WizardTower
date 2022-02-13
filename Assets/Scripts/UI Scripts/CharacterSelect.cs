@@ -48,7 +48,7 @@ public class CharacterSelect : MonoBehaviour
         // CHASE UNCOMMENT THIS THIS (add the scene to the build settings and then add the string name here)
         SceneManager.LoadScene("GameScene");
 
-        GameManager.instance.OnGameStart();
+        //GameManager.instance.OnGameStart();
     }
 
     public void BackButton()

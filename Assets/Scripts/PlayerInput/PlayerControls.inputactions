@@ -269,7 +269,7 @@
                 {
                     "name": "",
                     "id": "18995a49-9d13-49f9-afe0-831d3c72a71c",
-                    "path": "<Mouse>/position",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",

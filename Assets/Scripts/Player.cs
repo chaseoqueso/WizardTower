@@ -40,9 +40,9 @@ public class Player : MonoBehaviour
     {
         //Initialize the camera to be in the correct location and have the current culling mask
         Camera camera = GetComponentInChildren<Camera>();
-        camera.rect = new Rect(((id-1) % 2) * 0.5f, ((id-1) / 2) * 0.5f, 0.5f, 0.5f);
+        camera.rect = new Rect(((id - 1) % 2) * 0.5f, ((id - 1) / 2) * 0.5f, 0.5f, 0.5f);
 
-        List<string> ignoreLayers = new List<string>(new string[]{"Player1Ignore", "Player2Ignore", "Player3Ignore", "Player4Ignore"});
+        List<string> ignoreLayers = new List<string>(new string[] { "Player1Ignore", "Player2Ignore", "Player3Ignore", "Player4Ignore" });
         ignoreLayers.Remove("Player" + id + "Ignore");
 
         camera.cullingMask = LayerMask.GetMask("Default", "Player", "UI", "Enemy", "Player" + id + "Only", ignoreLayers[0], ignoreLayers[1], ignoreLayers[2]);
@@ -50,15 +50,20 @@ public class Player : MonoBehaviour
         //Initialize the models to display on the proper layers
         Model model = GetComponentInChildren<Model>();
 
-        foreach(GameObject m in model.thisPlayerOnly)
+        foreach (GameObject m in model.thisPlayerOnly)
         {
             m.layer = LayerMask.NameToLayer("Player" + id + "Only");
         }
 
-        foreach(GameObject m in model.thisPlayerIgnore)
+        foreach (GameObject m in model.thisPlayerIgnore)
         {
             m.layer = LayerMask.NameToLayer("Player" + id + "Ignore");
         }
+
+        GetComponent<CharacterController>().Move(new Vector3(id * 2 - 5, 0, 0));
+        GetComponent<InputManager>().inCharSelect = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()

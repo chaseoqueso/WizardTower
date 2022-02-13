@@ -183,7 +183,7 @@ public class InputManager : MonoBehaviour
         Vector2 mouse = input.Get<Vector2>();
         if (mousePrevious != Vector2.zero)
         {
-            mouseLook = ((mouse - mousePrevious) + lookPrevious)/2;
+            mouseLook = (mouse + mousePrevious)/2;
         }
         mousePrevious = mouse;
         lookPrevious = mouse - mousePrevious;

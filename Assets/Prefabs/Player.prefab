@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9202458107209241481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: -15}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9202458107219054215}
@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2778faf1c3a814c4bbd817151376bb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   enableMovement: 1
   enableLook: 1
   beingPickedUp: 0
@@ -72,6 +73,7 @@ MonoBehaviour:
   xLookSensitivity: 0.5
   yLookSensitivity: 0.5
   projectilePrefab: {fileID: 1385012735798279716, guid: ea75bf53a41a1744c9db4d06def47408, type: 3}
+  wizardType: 4
 --- !u!114 &418084484739323210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +88,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveInput: {x: 0, y: 0}
   lookInput: {x: 0, y: 0}
+  inCharSelect: 0
+  playerIsJoining: 1
+  wizardButtons: []
+  playerSelectedWizard: {fileID: 0}
 --- !u!114 &4386433650705233928
 MonoBehaviour:
   m_ObjectHideFlags: 0

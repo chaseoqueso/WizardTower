@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 
 public enum WizardType{
     redCone,
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
 
         playerInputManager = GetComponent<PlayerInputManager>();
         playerDatabase = new Dictionary<int, GameObject>();
+
+        SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     private void SetupModelDatabase()
@@ -119,12 +122,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "GameScene")
+            OnGameStart();
+    }
+
     public void OnGameStart()
     {
         foreach(KeyValuePair<int, GameObject> entry in playerDatabase){
             GameObject player = entry.Value;
             player.transform.parent = null;
-            player.GetComponent<InputManager>().inCharSelect = false;
+            SceneManager.MoveGameObjectToScene(player, SceneManager.GetActiveScene());
             player.GetComponent<Player>().Initialize(entry.Key);
         }
     }
