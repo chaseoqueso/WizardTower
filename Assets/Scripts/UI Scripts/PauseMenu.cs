@@ -58,7 +58,7 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1f;
         Debug.Log("Returning to Main Menu!");
-        // SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ToggleSettingsMenu(bool set)

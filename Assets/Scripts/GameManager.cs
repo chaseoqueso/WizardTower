@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 
 public enum WizardType{
     redCone,
@@ -39,6 +41,8 @@ public class GameManager : MonoBehaviour
 
         playerInputManager = GetComponent<PlayerInputManager>();
         playerDatabase = new Dictionary<int, GameObject>();
+
+        SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     private void SetupModelDatabase()
@@ -64,23 +68,37 @@ public class GameManager : MonoBehaviour
     public void OnPlayerJoined()
     {
         Debug.Log("Player joined! Num players: " + playerInputManager.playerCount);
+        GameManager.instance.EnableJoining(false);
 
         // Find all players in scene
         Player[] players = FindObjectsOfType<Player>();
+
         // Loop through to find the new player
         foreach(Player p in players){
+
             // If the player number has not yet been set, equals default 0 -> set new values
             if(p.playerNumber == 0){
                 p.playerNumber = playerInputManager.playerCount;
                 playerDatabase[p.playerNumber] = p.gameObject;
+
                 // Set this player to a child of the Game Manager
                 p.transform.parent = transform;
+
+                CharSelectPanel panel = CharacterSelect.instance.GetPanelFromPlayerNum(p.playerNumber);
+                panel.playerIsJoining = true;
+                panel.ToggleJoinOverlay(false);
+                panel.SetPlayerJoiningUI(true);
+
+                // p.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+                // FindObjectOfType<InputSystemUIInputModule>().actionsAsset = p.GetComponent<PlayerInput>().actions;
+
+                break;
             }
         }
 
-        if(playerInputManager.playerCount == 4){
-            EnableJoining(false);
-        }
+        // if(playerInputManager.playerCount == 4){
+        //     EnableJoining(false);
+        // }
     }
 
     // Make sure this doesn't cause problems with CharSelectPanel PlayerCanceled()
@@ -104,12 +122,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "GameScene")
+            OnGameStart();
+    }
+
     public void OnGameStart()
     {
         foreach(KeyValuePair<int, GameObject> entry in playerDatabase){
             GameObject player = entry.Value;
             player.transform.parent = null;
-            player.GetComponent<InputManager>().inCharSelect = false;
+            SceneManager.MoveGameObjectToScene(player, SceneManager.GetActiveScene());
             player.GetComponent<Player>().Initialize(entry.Key);
         }
     }
