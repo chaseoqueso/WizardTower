@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Tower = GameObject.Find("WizardTowerPillar").transform;
     }
 
     // Update is called once per frame
