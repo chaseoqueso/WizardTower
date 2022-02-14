@@ -161,6 +161,8 @@ public class Player : MonoBehaviour
                     projScript.tag = "Green";
                     break;
             }
+
+            projScript.setGemFromTag();
             cooldownRoutine = StartCoroutine(StartCooldown());
         }
     }

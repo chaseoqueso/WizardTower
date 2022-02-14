@@ -206,7 +206,8 @@ public class InputManager : MonoBehaviour
     // UI Input Stuff
     public void OnNavigate(InputValue input)
     {
-        Debug.Log("Player " + GetComponent<Player>().playerNumber);
+        // TODO: Uncomment once audio manager exists
+        // AudioManager.instance.Play("ClickSound");
 
         // If we're on the character select screen
         if(inCharSelect && playerIsJoining){
