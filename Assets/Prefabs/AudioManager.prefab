@@ -81,3 +81,156 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: DefeatSound
+    clip: {fileID: 8300000, guid: 9eef1d32d24ab0c4c910fde115a3544f, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BlueFire
+    clip: {fileID: 8300000, guid: b9ef24bec22601b45a57e394a0cab7c5, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BlueHit
+    clip: {fileID: 8300000, guid: 959b875afdf3ada49a1c97b46fd31bd1, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BlueHopoff
+    clip: {fileID: 8300000, guid: b9ef24bec22601b45a57e394a0cab7c5, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BluePickup
+    clip: {fileID: 8300000, guid: b9ef24bec22601b45a57e394a0cab7c5, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GreenFire
+    clip: {fileID: 8300000, guid: ce8b214f2eefc124dbd5eb469945b01d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GreenHit
+    clip: {fileID: 8300000, guid: d4694a57df5967c4aa016ddd50db6526, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GreenHopoff
+    clip: {fileID: 8300000, guid: 468b4b9de371c61499899589c8b7f146, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GreenPickup
+    clip: {fileID: 8300000, guid: 008168dc195b9104193d1f2269836c49, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: RedFire
+    clip: {fileID: 8300000, guid: 45fe0641417d29440b5b8ef87f1ee2bf, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: RedHit
+    clip: {fileID: 8300000, guid: d2e818b2be3430945bc56205f8c9d32d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: RedHopoff
+    clip: {fileID: 8300000, guid: 8378d736dd0aa5f43bed5d4e51c106e3, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: RedPickup
+    clip: {fileID: 8300000, guid: 0fc9e3f9325aa224096f87a7cdbec2db, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: YellowFire
+    clip: {fileID: 8300000, guid: 3b9f263acb6453b41bf7463198659715, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: YellowHit
+    clip: {fileID: 8300000, guid: 69449e5640ea53d4fa0f7ec496363967, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: YellowHopoff
+    clip: {fileID: 8300000, guid: 2ccbab3d665000946afa08178ccc2649, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: YellowPickup
+    clip: {fileID: 8300000, guid: b494db47f74cadd44a05f5c25209a277, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
