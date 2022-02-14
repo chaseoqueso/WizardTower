@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class EnemyModel : MonoBehaviour
 {
-    public MeshRenderer colorMesh;
+    public MeshRenderer[] colorMeshes;
+    public Transform gemLocation;
 }

@@ -12,6 +12,11 @@ public class EnemyAI : MonoBehaviour
     public Material red;
     public Material yellow;
 
+    public GameObject blueGem;
+    public GameObject greenGem;
+    public GameObject redGem;
+    public GameObject yellowGem;
+
     public Transform tower;
     // Start is called before the first frame update
     void Start()
@@ -35,35 +40,44 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void Initialize(int height, int color)
+    public void Initialize(int height, WizardType color)
     {
-        GameObject childObject = transform.GetChild(height ).gameObject;
+        GameObject childObject = transform.GetChild(height).gameObject;
         childObject.SetActive(true);
         SetColor(childObject, color);
     }
 
-    public void SetColor(GameObject childObject, int color)
+    public void SetColor(GameObject childObject, WizardType color)
     {
-        switch(color)
+        EnemyModel model = childObject.GetComponentInChildren<EnemyModel>();
+        switch (color)
         {
-            case 0:
+            case WizardType.blueSquare:
                 //blue
-                //childObject.GetComponent<MeshRenderer>().material = blue;
+                foreach (MeshRenderer renderer in model.colorMeshes)
+                    renderer.material = blue;
+                Instantiate(blueGem, model.gemLocation);
                 childObject.tag = "Blue";
                 break;
-            case 1:
+            case WizardType.greenDiamond:
                 //green
-                //childObject.GetComponent<MeshRenderer>().material = green;
+                foreach (MeshRenderer renderer in model.colorMeshes)
+                    renderer.material = green;
+                Instantiate(greenGem, model.gemLocation);
                 childObject.tag = "Green";
                 break;
-            case 2:
+            case WizardType.redCone:
                 //red
-                //childObject.GetComponent<MeshRenderer>().material = red;
+                foreach (MeshRenderer renderer in model.colorMeshes)
+                    renderer.material = red;
+                Instantiate(redGem, model.gemLocation);
                 childObject.tag = "Red";
                 break;
-            case 3:
+            case WizardType.yellowRound:
                 //yellow
-                //childObject.GetComponent<MeshRenderer>().material = yellow;
+                foreach (MeshRenderer renderer in model.colorMeshes)
+                    renderer.material = yellow;
+                Instantiate(yellowGem, model.gemLocation);
                 childObject.tag = "Yellow";
                 break;
         }
