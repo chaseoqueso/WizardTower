@@ -18,6 +18,7 @@ public class CharSelectPanel : MonoBehaviour
     [HideInInspector] public bool playerIsJoining = false;
 
     public Color attentionColor;
+    public Color defaultTextColor;
 
     void Start()
     {
@@ -38,7 +39,7 @@ public class CharSelectPanel : MonoBehaviour
 
     public void SetJoinOverlayNoticeable()
     {
-        joinOverlay.GetComponentInChildren<TMP_Text>().faceColor = attentionColor;
+        joinOverlay.GetComponentInChildren<TMP_Text>().color = attentionColor;
     }
 
     public void PlayerReady(CharSelectWizardButton wizardButton)
@@ -83,11 +84,11 @@ public class CharSelectPanel : MonoBehaviour
             wizardIcon.sprite = null;
             wizardIcon.gameObject.SetActive(false);
             readyText.gameObject.SetActive(false);
-            playerNumText.faceColor = attentionColor;
+            playerNumText.color = attentionColor;
         }
         else{
             readyText.gameObject.SetActive(true);
-            playerNumText.faceColor = Color.white;
+            playerNumText.color = defaultTextColor;
         }
     }
 
