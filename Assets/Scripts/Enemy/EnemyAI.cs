@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     public GameObject yellowGem;
 
     public Transform tower;
+
+    private bool isDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +36,11 @@ public class EnemyAI : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "WizardTowerPillar")
+        if (collision.gameObject.name == "WizardTowerPillar" && !isDead)
         {
-            Destroy(gameObject);
             tower.gameObject.GetComponent<TowerLife>().TakeDamage();
+            Destroy(gameObject);
+            isDead = true;
         }
     }
 
