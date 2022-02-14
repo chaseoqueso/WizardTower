@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public int playerNumber = 0;
 
     private const float moveSpeed = 5;
-    private const float pickupDistance = 2.5f;
+    private const float pickupDistance = 3.5f;
     private const float shootCooldown = 0.5f;
     private const float accel = 0.01f;
 
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
             firstPersonAnimator.SetTrigger("Grab");
             RaycastHit hit;
             Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * pickupDistance, Color.yellow, 1);
-            if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
+            if (Physics.SphereCast(transform.position + Vector3.up, 1, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
             {
                 Debug.Log("HitPlayer");
                 playerAnimator.SetBool("Pickup", true);

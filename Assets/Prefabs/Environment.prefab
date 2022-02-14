@@ -74,34 +74,6 @@ Transform:
   m_Father: {fileID: 1642833332805605559}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1427465027
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5233112404934836652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2124705421725058983, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
---- !u!64 &1427465026
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5466898857010618753}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8314571269056883277, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
 --- !u!1 &1432527622
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +394,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1427465027
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233112404934836652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2124705421725058983, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
+--- !u!64 &1427465026
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466898857010618753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8314571269056883277, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
 --- !u!1 &5581911260520584390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,6 +2325,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3756473180518285571, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: -1823322365421230674, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2334,8 +2338,16 @@ PrefabInstance:
       value: PlayZoneHitBox
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233112405309087440, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8442510506162454399, guid: 6680fb0db4ca9ab428ed2998fc7373de, type: 3}
       propertyPath: m_Enabled
