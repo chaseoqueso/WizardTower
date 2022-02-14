@@ -23,5 +23,20 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        switch (gameObject.tag)
+        {
+            case "Red":
+                AudioManager.instance.Play("RedHit");
+                break;
+            case "Blue":
+                AudioManager.instance.Play("BlueHit");
+                break;
+            case "Yellow":
+                AudioManager.instance.Play("YellowHit");
+                break;
+            case "Green":
+                AudioManager.instance.Play("GreenHit");
+                break;
+        }
     }
 }
