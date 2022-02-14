@@ -57,6 +57,7 @@ public class InputManager : MonoBehaviour
 
     }
 
+    // Specifically, not in character select screen AND game over UI not open
     private bool CanAcceptInput()
     {
         if(inCharSelect || GameOverUI.gameOverUIActive){
@@ -201,15 +202,33 @@ public class InputManager : MonoBehaviour
 
     public void OnPause(InputValue input)
     {
-        if(GameOverUI.gameOverUIActive){
+        if(!CanAcceptInput()){
             return;
         }
 
         if(!PauseMenu.instance.gameIsPaused){
             PauseMenu.instance.PauseGame();
+
+            // Deactivate the inputs of all players except this one
+            foreach(GameObject player in GameManager.instance.playerDatabase.Values){
+                if(player != gameObject){
+                    player.GetComponent<PlayerInput>().enabled = false;
+                }
+            }
+
+            // Use PlayerInput.SwitchCurrentActionMap("Menu") on the character who paused the game
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
+
+            // Assign the action map instance of the player who paused to the Input Sytem UI Input Module using: InputSystemUiInputModule.ActionsAsset = PlayerInput.actions
+            FindObjectOfType<InputSystemUIInputModule>().actionsAsset = GetComponent<PlayerInput>().actions;
         }
         else{
             PauseMenu.instance.ResumeGame();
+            // Undo the above stuff
+            foreach(GameObject player in GameManager.instance.playerDatabase.Values){
+                player.GetComponent<PlayerInput>().enabled = true;
+            }
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay");
         }
     }
 

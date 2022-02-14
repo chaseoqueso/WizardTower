@@ -12,6 +12,10 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         playButton.Select();
+
+        if(GameManager.instance){
+            GameManager.instance.EnableJoining(false);
+        }
     }
 
     public void PlayGame()
