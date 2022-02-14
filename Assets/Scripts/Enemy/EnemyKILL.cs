@@ -19,6 +19,7 @@ public class EnemyKILL : MonoBehaviour
     {
         if (other.tag == gameObject.tag)
         {
+            AudioManager.instance.Play("HitSound");
             Destroy(gameObject);
         }
         
