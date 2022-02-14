@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     {
         //Initialize the camera to be in the correct location and have the current culling mask
         Camera camera = GetComponentInChildren<Camera>();
-        camera.rect = new Rect(((id - 1) % 2) * 0.5f, ((id - 1) / 2) * 0.5f, 0.5f, 0.5f);
+        camera.rect = new Rect(((id - 1) % 2) * 0.5f, 0.5f - ((id - 1) / 2) * 0.5f, 0.5f, 0.5f);
 
         List<string> ignoreLayers = new List<string>(new string[] { "Player1Ignore", "Player2Ignore", "Player3Ignore", "Player4Ignore" });
         ignoreLayers.Remove("Player" + id + "Ignore");
@@ -111,7 +111,26 @@ public class Player : MonoBehaviour
             playerAnimator.SetTrigger("Shoot");
             firstPersonAnimator.SetTrigger("Shoot");
             GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.rotation * new Vector3(0, 1.5f, 1f), Quaternion.identity);
-            projectile.GetComponent<Projectile>().direction = transform.forward;
+            Projectile projScript = projectile.GetComponent<Projectile>();
+            projScript.direction = transform.forward;
+
+            switch(wizardType)
+            {
+                case WizardType.redCone:
+                    projScript.tag = "Red";
+                    break;
+                case WizardType.blueSquare:
+                    projScript.tag = "Blue";
+                    break;
+                case WizardType.yellowRound:
+                    projScript.tag = "Yellow";
+                    break;
+                case WizardType.greenDiamond:
+                    projScript.tag = "Green";
+                    break;
+            }
+
+            projScript.setGemFromTag();
             cooldownRoutine = StartCoroutine(StartCooldown());
         }
     }
@@ -161,9 +180,6 @@ public class Player : MonoBehaviour
                 currentVelocity.z = 0;
 
             controller.Move(currentVelocity);
-
-            Debug.Log("Target: " + targetVelocity);
-            Debug.Log("Current: " + currentVelocity);
         }
         else
         {

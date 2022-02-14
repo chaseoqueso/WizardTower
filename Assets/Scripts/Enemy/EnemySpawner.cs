@@ -84,19 +84,19 @@ public class EnemySpawner : MonoBehaviour
             randHeight = Random.Range(0, totalProbability);
             if(randHeight < height1Probability)
             {
-                enemy.GetComponent<EnemyAI>().Initialize(0, (int)enemyType);
+                enemy.GetComponent<EnemyAI>().Initialize(0, enemyType);
             }
             else if (randHeight < height1Probability + height2Probability)
             {
-                enemy.GetComponent<EnemyAI>().Initialize(1, (int)enemyType);
+                enemy.GetComponent<EnemyAI>().Initialize(1, enemyType);
             }
             else if (randHeight < height1Probability + height2Probability + height3Probability)
             {
-                enemy.GetComponent<EnemyAI>().Initialize(2, (int)enemyType);
+                enemy.GetComponent<EnemyAI>().Initialize(2, enemyType);
             }
             else
             {
-                enemy.GetComponent<EnemyAI>().Initialize(3, (int)enemyType);
+                enemy.GetComponent<EnemyAI>().Initialize(3, enemyType);
             }
 
             enemyTypeQueue.Enqueue(enemyType);

@@ -223,6 +223,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1525953411639987893, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1525953412174836779, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1525953412264658887, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1525953412623087992, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
       propertyPath: spawnDelay
       value: 5
@@ -279,6 +291,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1525953412672116623, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1525953412776098905, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1525953413377017497, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c8246cc1d476d844a4034994d39437c, type: 3}
 --- !u!1001 &8068229978313094841

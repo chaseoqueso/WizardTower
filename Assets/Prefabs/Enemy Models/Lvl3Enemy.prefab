@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4087835988156015724}
   - component: {fileID: 223119805199823852}
+  - component: {fileID: 7967534823501993617}
   m_Layer: 0
   m_Name: Lvl3Enemy
   m_TagString: Untagged
@@ -107,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 3742835990942236374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 548263743494937130}
   - {fileID: 5258912961742378337}
@@ -136,6 +137,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7967534823501993617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742835990942236374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15944cff22d9baf499243049c156c1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorMeshes:
+  - {fileID: 7059104424677885221}
+  gemLocation: {fileID: 1091249868717479717}
 --- !u!1 &4404284642746519537
 GameObject:
   m_ObjectHideFlags: 0
