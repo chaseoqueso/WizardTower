@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     public void OnPlayerJoined()
     {
         Debug.Log("Player joined! Num players: " + playerInputManager.playerCount);
-        GameManager.instance.EnableJoining(false);
+        EnableJoining(false);
 
         // Find all players in scene
         Player[] players = FindObjectsOfType<Player>();
@@ -99,7 +99,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Lost a player! Num players: " + playerInputManager.playerCount);
 
-        if(playerInputManager.playerCount < 4){
+        // If we're on the player select screen w/ < 4 players, make sure we can add more players
+        if(playerInputManager.playerCount < 4 && CharacterSelect.instance){
             EnableJoining(true);
             CharacterSelect.instance.CanStartGame(false);
         }
@@ -119,6 +120,15 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "GameScene")
             OnGameStart();
+        
+
+        // If returning to the Main Menu from the char select, delete the players
+        else if (scene.name == "MainMenu"){
+            foreach(KeyValuePair<int, GameObject> entry in playerDatabase){
+                Destroy(entry.Value);
+            }
+            playerDatabase.Clear();
+        }
     }
 
     public void OnGameStart()
