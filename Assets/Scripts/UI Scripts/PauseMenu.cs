@@ -14,7 +14,6 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenuDefaultPanel;
     [SerializeField] private GameObject settingsMenuPanel;
-    [SerializeField] private GameObject controlsMenuPanel;
 
     [SerializeField] private Button continueButton;
 
@@ -39,7 +38,7 @@ public class PauseMenu : MonoBehaviour
     private void ResetPauseUI()
     {
         settingsMenuPanel.SetActive(false);
-        controlsMenuPanel.SetActive(false);
+        // controlsMenuPanel.SetActive(false);
         pauseMenuDefaultPanel.SetActive(true);
 
         pauseMenuUI.SetActive(false);
@@ -67,9 +66,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenuDefaultPanel.SetActive(!set);
     }
 
-    public void ToggleControlsMenu(bool set)
-    {
-        controlsMenuPanel.SetActive(set);
-        pauseMenuDefaultPanel.SetActive(!set);
-    }
+    // public void ToggleControlsMenu(bool set)
+    // {
+    //     controlsMenuPanel.SetActive(set);
+    //     pauseMenuDefaultPanel.SetActive(!set);
+    // }
 }
