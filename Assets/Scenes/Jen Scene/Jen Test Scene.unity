@@ -239,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 560474620022628141, guid: a1749d7a46426a24da626d43570c1e54, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 560474620595041991, guid: a1749d7a46426a24da626d43570c1e54, type: 3}
       propertyPath: m_AnchorMax.y
@@ -376,6 +376,10 @@ PrefabInstance:
     - target: {fileID: 560474621434496901, guid: a1749d7a46426a24da626d43570c1e54, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 560474621442192773, guid: a1749d7a46426a24da626d43570c1e54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 106.13672
       objectReference: {fileID: 0}
     - target: {fileID: 560474621507052544, guid: a1749d7a46426a24da626d43570c1e54, type: 3}
       propertyPath: m_AnchorMax.y
