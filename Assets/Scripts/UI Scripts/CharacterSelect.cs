@@ -73,6 +73,8 @@ public class CharacterSelect : MonoBehaviour
     {
         Debug.Log("Starting game!");
         SceneManager.LoadScene("GameScene");
+        AudioManager.instance.Stop("TitleSong");
+        AudioManager.instance.Play("GameplaySong");
     }
 
     public void BackButton()

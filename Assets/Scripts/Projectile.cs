@@ -48,5 +48,6 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
             Destroy(gameObject);
+        
     }
 }

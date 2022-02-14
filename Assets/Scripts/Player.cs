@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public int playerNumber = 0;
 
     private const float moveSpeed = 5;
-    private const float pickupDistance = 2.5f;
+    private const float pickupDistance = 3.5f;
     private const float shootCooldown = 0.5f;
     private const float accel = 0.01f;
 
@@ -97,9 +97,25 @@ public class Player : MonoBehaviour
             firstPersonAnimator.SetTrigger("Grab");
             RaycastHit hit;
             Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * pickupDistance, Color.yellow, 1);
-            if (Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
+            if (Physics.SphereCast(transform.position + Vector3.up, 1, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
             {
                 Debug.Log("HitPlayer");
+                switch (wizardType)
+                {
+                    case WizardType.redCone:
+                        AudioManager.instance.Play("RedPickup");
+                        break;
+                    case WizardType.blueSquare:
+                        AudioManager.instance.Play("BluePickup");
+                        break;
+                    case WizardType.yellowRound:
+                        AudioManager.instance.Play("YellowPickup");
+                        break;
+                    case WizardType.greenDiamond:
+                        AudioManager.instance.Play("GreenPickup");
+                        break;
+                }
+
                 playerAnimator.SetBool("Pickup", true);
                 firstPersonAnimator.SetBool("Pickup", true);
                 liftRoutine = StartCoroutine(PickupRoutine(hit.transform.GetComponent<Player>()));
@@ -110,6 +126,22 @@ public class Player : MonoBehaviour
         {
             playerAnimator.SetTrigger("Shoot");
             firstPersonAnimator.SetTrigger("Shoot");
+            AudioManager.instance.Play("ShootSound");
+            switch (wizardType)
+            {
+                case WizardType.redCone:
+                    AudioManager.instance.Play("RedFire");
+                    break;
+                case WizardType.blueSquare:
+                    AudioManager.instance.Play("BlueFire");
+                    break;
+                case WizardType.yellowRound:
+                    AudioManager.instance.Play("YellowFire");
+                    break;
+                case WizardType.greenDiamond:
+                    AudioManager.instance.Play("GreenFire");
+                    break;
+            }
             GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.rotation * new Vector3(0, 1.5f, 1f), Quaternion.identity);
             Projectile projScript = projectile.GetComponent<Projectile>();
             projScript.direction = transform.forward;
@@ -216,7 +248,21 @@ public class Player : MonoBehaviour
 
         playerAnimator.SetBool("Pickup", false);
         firstPersonAnimator.SetBool("Pickup", false);
-
+        switch (wizardType)
+                {
+                    case WizardType.redCone:
+                        AudioManager.instance.Play("RedPickup");
+                        break;
+                    case WizardType.blueSquare:
+                        AudioManager.instance.Play("BluePickup");
+                        break;
+                    case WizardType.yellowRound:
+                        AudioManager.instance.Play("YellowPickup");
+                        break;
+                    case WizardType.greenDiamond:
+                        AudioManager.instance.Play("GreenPickup");
+                        break;
+                }
         enableMovement = false;
         while (pickupProgress > 0)
         {
@@ -228,7 +274,21 @@ public class Player : MonoBehaviour
 
             yield return null;
         }
-
+        switch (wizardType)
+        {
+            case WizardType.redCone:
+                AudioManager.instance.Play("RedHopoff");
+                break;
+            case WizardType.blueSquare:
+                AudioManager.instance.Play("BlueHopoff");
+                break;
+            case WizardType.yellowRound:
+                AudioManager.instance.Play("YellowHopoff");
+                break;
+            case WizardType.greenDiamond:
+                AudioManager.instance.Play("GreenHopoff");
+                break;
+        }
         enableMovement = true;
         otherPlayer.enableMovement = true;
         otherPlayer.beingPickedUp = false;
