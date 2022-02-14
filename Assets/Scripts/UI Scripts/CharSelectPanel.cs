@@ -14,11 +14,17 @@ public class CharSelectPanel : MonoBehaviour
     [SerializeField] private TMP_Text playerNumText;
 
     [SerializeField] private GameObject joinOverlay;
-    // Can get the text from the joinOverlay
-    // Set the text to a lighter color only for the NEXT player
-    // like if playerNum == gamemanager.numplayers + 1, set it to a lighter color kinda thing
 
     [HideInInspector] public bool playerIsJoining = false;
+
+    public Color attentionColor;
+
+    void Start()
+    {
+        if(playerNum == 1){
+            SetJoinOverlayNoticeable();
+        }
+    }
 
     public int PlayerNum()
     {
@@ -30,15 +36,17 @@ public class CharSelectPanel : MonoBehaviour
         joinOverlay.gameObject.SetActive(set);
     }
 
+    public void SetJoinOverlayNoticeable()
+    {
+        joinOverlay.GetComponentInChildren<TMP_Text>().faceColor = attentionColor;
+    }
+
     public void PlayerReady(CharSelectWizardButton wizardButton)
     {
         ToggleReadyStatus(true);
         CharacterSelect.instance.readyPlayers.Add(playerNum);
 
-        if(CharacterSelect.instance.readyPlayers.Count == 4){
-            CharacterSelect.instance.CanStartGame(true);
-        }
-
+        wizardIcon.gameObject.SetActive(true);
         // TODO: below is TEMP (will later be set in the SetPlayerModel function)
         wizardIcon.sprite = wizardButton.gameObject.GetComponent<Image>().sprite;    
         wizardIcon.SetNativeSize();
@@ -47,8 +55,14 @@ public class CharSelectPanel : MonoBehaviour
 
         SetPlayerJoiningUI(false);
 
-        if(GameManager.instance.playerInputManager.playerCount < 4){
+        int currentPlayerCount = GameManager.instance.playerInputManager.playerCount;
+        if(currentPlayerCount < 4){
             GameManager.instance.EnableJoining(true);
+            CharacterSelect.instance.GetPanelFromPlayerNum(currentPlayerCount+1).SetJoinOverlayNoticeable();
+        }
+
+        if(CharacterSelect.instance.readyPlayers.Count == 4){
+            CharacterSelect.instance.CanStartGame(true);
         }
     }
 
@@ -67,12 +81,13 @@ public class CharSelectPanel : MonoBehaviour
         if(set){
             // TEMP
             wizardIcon.sprite = null;
+            wizardIcon.gameObject.SetActive(false);
             readyText.gameObject.SetActive(false);
-            playerNumText.color = Color.yellow;
+            playerNumText.faceColor = attentionColor;
         }
         else{
             readyText.gameObject.SetActive(true);
-            playerNumText.color = Color.white;
+            playerNumText.faceColor = Color.white;
         }
     }
 
