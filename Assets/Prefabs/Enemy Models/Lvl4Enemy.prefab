@@ -314,7 +314,7 @@ MonoBehaviour:
   colorMeshes:
   - {fileID: 371128829251233610}
   - {fileID: 1170992338417120856}
-  gemLocation: {fileID: 0}
+  gemLocation: {fileID: 5319416856434145052}
 --- !u!1 &7879464824135918577
 GameObject:
   m_ObjectHideFlags: 0

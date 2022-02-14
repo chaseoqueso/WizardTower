@@ -89,16 +89,9 @@ public class GameManager : MonoBehaviour
                 panel.ToggleJoinOverlay(false);
                 panel.SetPlayerJoiningUI(true);
 
-                // p.GetComponent<PlayerInput>().SwitchCurrentActionMap("UI");
-                // FindObjectOfType<InputSystemUIInputModule>().actionsAsset = p.GetComponent<PlayerInput>().actions;
-
                 break;
             }
         }
-
-        // if(playerInputManager.playerCount == 4){
-        //     EnableJoining(false);
-        // }
     }
 
     // Make sure this doesn't cause problems with CharSelectPanel PlayerCanceled()

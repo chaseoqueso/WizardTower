@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class CharacterSelect : MonoBehaviour
 {
@@ -42,7 +43,11 @@ public class CharacterSelect : MonoBehaviour
         startButton.interactable = set;
 
         if(set){
+            startButton.GetComponentInChildren<TMP_Text>().faceColor = new Color32(255, 255, 255, 255);
             startButton.Select();
+        }
+        else{
+            startButton.GetComponentInChildren<TMP_Text>().faceColor = new Color32(255, 255, 255, 75);
         }
     }
 
@@ -50,10 +55,7 @@ public class CharacterSelect : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Starting game!");
-        // CHASE UNCOMMENT THIS THIS (add the scene to the build settings and then add the string name here)
         SceneManager.LoadScene("GameScene");
-
-        //GameManager.instance.OnGameStart();
     }
 
     public void BackButton()

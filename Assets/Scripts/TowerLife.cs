@@ -17,23 +17,20 @@ public class TowerLife : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider collision)
+    public void TakeDamage()
     {
         // if tower collide with enemy
-        if (collision.gameObject.layer == 6)
-        {
-            health--;
+        AudioManager.instance.Play("TowerSound");
+        health--;
             Debug.Log("Took a Hit! Health = " + health);
             if (health == 0)
             {
-                //gameOver
-                GameManager.instance.timeSinceLevel = Time.timeSinceLevelLoad;
+            AudioManager.instance.Play("DefeatSound");
+            //gameOver
+            GameManager.instance.timeSinceLevel = Time.timeSinceLevelLoad;
                 gameOver.ToggleGameOverUI(true);
             }
-        }
-        else
-        {
-            Debug.Log("Something Fucked up");
-        }
+        
+
     }
 }
