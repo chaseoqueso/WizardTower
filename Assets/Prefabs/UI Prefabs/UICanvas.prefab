@@ -648,7 +648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0016479, y: 0}
+  m_AnchoredPosition: {x: 0.0015869141, y: 0}
   m_SizeDelta: {x: -1012.3, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &560474620385406781
@@ -1175,8 +1175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolSlider: {fileID: 2205955614179357123}
-  musicVolSlider: {fileID: 0}
-  SFXVolSlider: {fileID: 0}
+  musicVolSlider: {fileID: 2239648131725739483}
+  SFXVolSlider: {fileID: 1829838626205779945}
 --- !u!1 &560474621442192774
 GameObject:
   m_ObjectHideFlags: 0

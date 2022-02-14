@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 
 	public static AudioManager instance;
 
-	public AudioMixerGroup mixerGroup;
+	public AudioMixerGroup masterMixerGroup;
 
 	public Sound[] sounds;
 
@@ -29,7 +29,8 @@ public class AudioManager : MonoBehaviour
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
 
-			s.source.outputAudioMixerGroup = mixerGroup;
+			if(s.source.outputAudioMixerGroup == null)
+				s.source.outputAudioMixerGroup = masterMixerGroup;
 		}
 	}
 
@@ -61,16 +62,16 @@ public class AudioManager : MonoBehaviour
 
 	public void AdjustMasterVolume(float newVolumeValue)
 	{
-		// TODO
+		masterMixerGroup.audioMixer.SetFloat("masterVolume", Mathf.Lerp(-80, 0, newVolumeValue));
 	}
 
 	public void AdjustMusicVolume(float newVolumeValue)
 	{
-		// TODO
+		masterMixerGroup.audioMixer.SetFloat("musicVolume", Mathf.Lerp(-80, 0, newVolumeValue));
 	}
 
 	public void AdjustSFXVolume(float newVolumeValue)
 	{
-		// TODO
+		masterMixerGroup.audioMixer.SetFloat("sfxVolume", Mathf.Lerp(-80, 0, newVolumeValue));
 	}
 }

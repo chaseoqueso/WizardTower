@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 2.5f;
+    public float speed = 2.5f;
     public Material blue;
     public Material green;
     public Material red;

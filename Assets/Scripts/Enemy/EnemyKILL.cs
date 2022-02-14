@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class EnemyKILL : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == gameObject.tag)
         {
             AudioManager.instance.Play("HitSound");
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
             switch (other.tag)
             {
                 case "Red":

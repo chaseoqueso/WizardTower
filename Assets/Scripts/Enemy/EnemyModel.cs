@@ -6,4 +6,9 @@ public class EnemyModel : MonoBehaviour
 {
     public MeshRenderer[] colorMeshes;
     public Transform gemLocation;
+
+    void Start()
+    {
+        GetComponent<Animator>().SetFloat("Speed", GetComponentInParent<EnemyAI>().speed);
+    }
 }
