@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1146472343023376056}
   - component: {fileID: 2545167042400726086}
   - component: {fileID: 528222747061465346}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Lvl1Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15944cff22d9baf499243049c156c1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorMesh: {fileID: 0}
+  colorMeshes:
+  - {fileID: 8649639359905300782}
+  gemLocation: {fileID: 4406268614531314755}
 --- !u!1 &3820515390964758897
 GameObject:
   m_ObjectHideFlags: 0
