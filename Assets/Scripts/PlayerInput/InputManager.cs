@@ -49,15 +49,25 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
+        // Does this need a can accept input check? 
+
         lookInput = mouseLook;
         if(lookInput == Vector2.zero)
             lookInput = controllerLook;
 
     }
 
+    private bool CanAcceptInput()
+    {
+        if(inCharSelect || GameOverUI.gameOverUIActive){
+            return false;
+        }
+        return true;
+    }
+
     private void LateUpdate()
     {
-        if(inCharSelect){
+        if( CanAcceptInput() ){
             return;
         }
 
@@ -68,7 +78,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveLeft(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -77,7 +87,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveLeftCanceled()
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -87,7 +97,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveRight(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -96,7 +106,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveRightCanceled()
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -106,7 +116,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveForward(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -115,7 +125,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveForwardCanceled()
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -125,7 +135,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveBack(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -134,7 +144,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveBackCanceled()
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -144,7 +154,7 @@ public class InputManager : MonoBehaviour
 
     public void OnShoot(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -154,7 +164,7 @@ public class InputManager : MonoBehaviour
     // Picking up and dropping wizards
     public void OnWizardInteract(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -165,7 +175,7 @@ public class InputManager : MonoBehaviour
     // (Correct version should be automatically called based on your input device)
     public void OnLookGamepad(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -176,7 +186,7 @@ public class InputManager : MonoBehaviour
     // (Correct version should be automatically called based on your input device)
     public void OnLookMouse(InputValue input)
     {
-        if(inCharSelect){
+        if(CanAcceptInput()){
             return;
         }
 
@@ -191,7 +201,7 @@ public class InputManager : MonoBehaviour
 
     public void OnPause(InputValue input)
     {
-        if(inCharSelect){
+        if(GameOverUI.gameOverUIActive){
             return;
         }
 

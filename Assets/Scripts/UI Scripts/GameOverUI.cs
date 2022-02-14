@@ -18,6 +18,8 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
 
+    [HideInInspector] public static bool gameOverUIActive {get; private set;}
+
     [SerializeField] private TMP_Text thisGameScoreText;
     private float thisGameScoreValue = 0f;
 
@@ -33,6 +35,8 @@ public class GameOverUI : MonoBehaviour
 
     void Start()
     {
+        gameOverUIActive = false;
+
         // If player prefs, get them and set the values in the UI
         if( PlayerPrefs.HasKey(ScoreSlots.First.ToString()) ){
             SetHighScoreTextFromPrefs();
@@ -52,6 +56,7 @@ public class GameOverUI : MonoBehaviour
     public void ToggleGameOverUI(bool set)
     {
         gameOverPanel.SetActive(set);
+        gameOverUIActive = set;
 
         if(set){
             menuButton.Select();
