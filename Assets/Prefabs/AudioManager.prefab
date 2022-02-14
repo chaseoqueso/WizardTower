@@ -234,3 +234,21 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: TitleSong
+    clip: {fileID: 8300000, guid: 6c7c78daf61722f4c851ebf128ed016d, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GameplaySong
+    clip: {fileID: 8300000, guid: 1f76e650c9d66ee4391e4348a8e43ce7, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
