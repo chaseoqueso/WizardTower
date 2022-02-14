@@ -6,6 +6,23 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
 
+/*
+    UI COLORS:
+
+    menu background lightest: #f6e7ff
+
+    med: #6a3b8a
+
+    dark: #4d395a
+
+
+    === Colors from Buttons ===
+
+    Light Purple: #e6bbff
+
+    Darker Purple: #c377f0
+*/
+
 public class CharacterSelect : MonoBehaviour
 {
     public static CharacterSelect instance;
@@ -43,11 +60,11 @@ public class CharacterSelect : MonoBehaviour
         startButton.interactable = set;
 
         if(set){
-            startButton.GetComponentInChildren<TMP_Text>().faceColor = new Color32(255, 255, 255, 255);
+            startButton.GetComponentInChildren<TMP_Text>().color = new Color32(255, 255, 255, 255);
             startButton.Select();
         }
         else{
-            startButton.GetComponentInChildren<TMP_Text>().faceColor = new Color32(255, 255, 255, 75);
+            startButton.GetComponentInChildren<TMP_Text>().color = new Color32(255, 255, 255, 75);
         }
     }
 
