@@ -59,4 +59,18 @@ public class AudioManager : MonoBehaviour
 		s.source.Stop();
 	}
 
+	public void AdjustMasterVolume(float newVolumeValue)
+	{
+		// TODO
+	}
+
+	public void AdjustMusicVolume(float newVolumeValue)
+	{
+		// TODO
+	}
+
+	public void AdjustSFXVolume(float newVolumeValue)
+	{
+		// TODO
+	}
 }
