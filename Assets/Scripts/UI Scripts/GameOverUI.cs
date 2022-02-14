@@ -18,6 +18,8 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
 
+    [HideInInspector] public static bool gameOverUIActive {get; private set;}
+
     [SerializeField] private TMP_Text thisGameScoreText;
     private float thisGameScoreValue = 0f;
 
@@ -33,6 +35,8 @@ public class GameOverUI : MonoBehaviour
 
     void Start()
     {
+        gameOverUIActive = false;
+
         // If player prefs, get them and set the values in the UI
         if( PlayerPrefs.HasKey(ScoreSlots.First.ToString()) ){
             SetHighScoreTextFromPrefs();
@@ -52,11 +56,12 @@ public class GameOverUI : MonoBehaviour
     public void ToggleGameOverUI(bool set)
     {
         gameOverPanel.SetActive(set);
+        gameOverUIActive = set;
 
         if(set){
+            Time.timeScale = 0f;
             menuButton.Select();
             SetScoreOnGameOver();
-            Time.timeScale = 0f;
         }
     }
 
@@ -78,7 +83,7 @@ public class GameOverUI : MonoBehaviour
         for(int i = 0; i < (int)ScoreSlots.enumSize; i++){
             // If there is no score for a slot, set it to the earliest of such slots
             if( PlayerPrefs.GetFloat( ((ScoreSlots)i).ToString() ) == 0f ){
-                // TODO: Replace with this one
+                ReplaceSlotValue( (ScoreSlots)i, thisGameScoreValue );
                 return;
             }
 
@@ -131,7 +136,7 @@ public class GameOverUI : MonoBehaviour
             
             // If THIS game's score, make it stand out more
             if( scoreValue == thisGameScoreValue ){
-                readableStringScore = "<b><color=blue>" + readableStringScore + "</b></color>";
+                readableStringScore = "<b><color=purple>" + readableStringScore + "</b></color>";
             }
 
             switch( (ScoreSlots)i ){
