@@ -18,7 +18,8 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
 
-    [SerializeField] private TMP_Text thisGameScore;
+    [SerializeField] private TMP_Text thisGameScoreText;
+    private float thisGameScoreValue = 0f;
 
     [SerializeField] private TMP_Text firstSlot;
     [SerializeField] private TMP_Text secondSlot;
@@ -39,11 +40,11 @@ public class GameOverUI : MonoBehaviour
         }
 
         // If no player prefs yet, set them up AND set the UI to have a bunch of dashes
-        PlayerPrefs.SetString(ScoreSlots.First.ToString(), NO_SCORE);
-        PlayerPrefs.SetString(ScoreSlots.Second.ToString(), NO_SCORE);
-        PlayerPrefs.SetString(ScoreSlots.Third.ToString(), NO_SCORE);
-        PlayerPrefs.SetString(ScoreSlots.Fourth.ToString(), NO_SCORE);
-        PlayerPrefs.SetString(ScoreSlots.Fifth.ToString(), NO_SCORE);
+        PlayerPrefs.SetFloat(ScoreSlots.First.ToString(), 0);
+        PlayerPrefs.SetFloat(ScoreSlots.Second.ToString(), 0);
+        PlayerPrefs.SetFloat(ScoreSlots.Third.ToString(), 0);
+        PlayerPrefs.SetFloat(ScoreSlots.Fourth.ToString(), 0);
+        PlayerPrefs.SetFloat(ScoreSlots.Fifth.ToString(), 0);
         PlayerPrefs.Save();
     }
 
@@ -69,42 +70,51 @@ public class GameOverUI : MonoBehaviour
 
     public void SetScoreOnGameOver()
     {
-        // TODO: Set this score value
-        thisGameScore.text = NO_SCORE;
+        thisGameScoreValue = GameManager.instance.timeSinceLevel;
+        thisGameScoreText.text = ConvertSecondsToReadableString(thisGameScoreValue);
 
         // === If necessary, adjust 5 high score ranks ===
 
         for(int i = 0; i < (int)ScoreSlots.enumSize; i++){
             // If there is no score for a slot, set it to the earliest of such slots
-            if( PlayerPrefs.GetString( ((ScoreSlots)i).ToString() ).Equals(NO_SCORE) ){
-                // Replace with this one
+            if( PlayerPrefs.GetFloat( ((ScoreSlots)i).ToString() ) == 0f ){
+                // TODO: Replace with this one
                 return;
             }
 
-            // Otherwise, compare this time stamp to the existing ones
-            // If this is bigger than one, move everything down
-
-            string oldScore = PlayerPrefs.GetString(((ScoreSlots)i).ToString());
-
-            // if( oldScore -> convert to # -> compare to time stamp ){
-            //     ReplaceSlotValue( (ScoreSlots)i, newTime )
-            //     return;
-            // }
+            // Otherwise, compare this time stamp to the existing ones; if this is bigger than one, move everything down
+            float oldScore = PlayerPrefs.GetFloat(((ScoreSlots)i).ToString());
+            if(oldScore < thisGameScoreValue){
+                ReplaceSlotValue( (ScoreSlots)i, thisGameScoreValue );
+                return;
+            }
         }
 
         // Update the UI accordingly
         SetHighScoreTextFromPrefs();
     }
 
-    private void ReplaceSlotValue(ScoreSlots slot, string newTime)
+    private string ConvertSecondsToReadableString( float timeInSeconds )
+    {
+        if(timeInSeconds == 0){
+            return NO_SCORE;
+        }
+
+        int min = (int)Mathf.Floor( timeInSeconds / 60 );
+        int sec = (int)Mathf.Floor( timeInSeconds % 60 );
+
+        return min + ":" + sec;
+    }
+
+    private void ReplaceSlotValue(ScoreSlots slot, float newTime)
     {
         // Starting at that slot, shift everything down
         for( int i = (int)slot; i < (int)ScoreSlots.enumSize; i++ ){
             // Temp store the old value
-            string valueToMoveDown = PlayerPrefs.GetString(((ScoreSlots)i).ToString());
+            float valueToMoveDown = PlayerPrefs.GetFloat(((ScoreSlots)i).ToString());
 
             // Set this slot to the new value
-            PlayerPrefs.SetString(((ScoreSlots)i).ToString(), newTime);
+            PlayerPrefs.SetFloat(((ScoreSlots)i).ToString(), newTime);
 
             // Set the next slot to the next value
             newTime = valueToMoveDown;
@@ -116,28 +126,29 @@ public class GameOverUI : MonoBehaviour
     private void SetHighScoreTextFromPrefs()
     {
         for(int i = 0; i < (int)ScoreSlots.enumSize; i++){
-
-            string score = PlayerPrefs.GetString(((ScoreSlots)i).ToString());
+            float scoreValue = PlayerPrefs.GetFloat(((ScoreSlots)i).ToString());
+            string readableStringScore = ConvertSecondsToReadableString(scoreValue);
+            
             // If THIS game's score, make it stand out more
-            if(score.Equals(thisGameScore.text)){
-                score = "<b><color=blue>" + score + "</b></color>";
+            if( scoreValue == thisGameScoreValue ){
+                readableStringScore = "<b><color=blue>" + readableStringScore + "</b></color>";
             }
 
             switch( (ScoreSlots)i ){
                 case ScoreSlots.First:
-                    firstSlot.text = score;
+                    firstSlot.text = readableStringScore;
                     break;
                 case ScoreSlots.Second:
-                    secondSlot.text = score;
+                    secondSlot.text = readableStringScore;
                     break;
                 case ScoreSlots.Third:
-                    thirdSlot.text = score;
+                    thirdSlot.text = readableStringScore;
                     break;
                 case ScoreSlots.Fourth:
-                    fourthSlot.text = score;
+                    fourthSlot.text = readableStringScore;
                     break;
                 case ScoreSlots.Fifth:
-                    fifthSlot.text = score;
+                    fifthSlot.text = readableStringScore;
                     break;
             }
         }
