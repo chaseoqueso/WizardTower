@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
             m.layer = LayerMask.NameToLayer("Player" + id + "Ignore");
         }
 
-        GetComponent<CharacterController>().Move(new Vector3(id * 2 - 5, 0, 0));
+        GetComponent<CharacterController>().Move(new Vector3((id * 3) - 7.5f, 0, 0));
         GetComponent<InputManager>().inCharSelect = false;
 
         Cursor.lockState = CursorLockMode.Locked;
