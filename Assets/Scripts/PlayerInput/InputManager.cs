@@ -57,6 +57,7 @@ public class InputManager : MonoBehaviour
 
     }
 
+    // Specifically, not in character select screen AND game over UI not open
     private bool CanAcceptInput()
     {
         if(inCharSelect || GameOverUI.gameOverUIActive){
