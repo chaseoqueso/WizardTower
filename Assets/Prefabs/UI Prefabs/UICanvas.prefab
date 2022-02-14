@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 7314233179499251910}
-  thisGameScore: {fileID: 7130635636883102413}
+  thisGameScoreText: {fileID: 7130635636883102413}
   firstSlot: {fileID: 6912240766284821639}
   secondSlot: {fileID: 589867344444073265}
   thirdSlot: {fileID: 5389941133577686976}
