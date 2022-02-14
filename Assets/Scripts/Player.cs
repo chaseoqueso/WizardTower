@@ -110,6 +110,7 @@ public class Player : MonoBehaviour
         {
             playerAnimator.SetTrigger("Shoot");
             firstPersonAnimator.SetTrigger("Shoot");
+            AudioManager.instance.Play("ShootSound");
             GameObject projectile = Instantiate(projectilePrefab, transform.position + transform.rotation * new Vector3(0, 1.5f, 1f), Quaternion.identity);
             Projectile projScript = projectile.GetComponent<Projectile>();
             projScript.direction = transform.forward;

@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
         if (collision.gameObject.name == "WizardTowerPillar")
         {
             Destroy(gameObject);
+            tower.gameObject.GetComponent<TowerLife>().TakeDamage();
         }
     }
 
