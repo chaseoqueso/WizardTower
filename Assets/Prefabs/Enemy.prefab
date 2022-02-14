@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 4949264861353982576}
   - component: {fileID: 1454129260737436840}
   - component: {fileID: 378794888974828819}
+  - component: {fileID: 6687161540362448129}
   m_Layer: 6
   m_Name: Level2Enemy
   m_TagString: Untagged
@@ -174,6 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82179e475dc762541a8c8ca7e49c4111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &6687161540362448129
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494401947777455154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!65 &1591259121608202616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -249,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4162e512446222d46b9e053a830e030a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 2
   blue: {fileID: 2100000, guid: 09470d9d22246b548b71b5076bf4609e, type: 2}
   green: {fileID: 2100000, guid: 7b171b85a204795498f1f24fe22dee3b, type: 2}
   red: {fileID: 2100000, guid: 6d9b67f9ce5ab27489bb8ecd39ca16f9, type: 2}

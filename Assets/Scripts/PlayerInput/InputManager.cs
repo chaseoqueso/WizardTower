@@ -67,7 +67,7 @@ public class InputManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if( CanAcceptInput() ){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -78,7 +78,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveLeft(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -87,7 +87,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveLeftCanceled()
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -97,7 +97,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveRight(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -106,7 +106,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveRightCanceled()
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -116,7 +116,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveForward(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -125,7 +125,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveForwardCanceled()
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -135,7 +135,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveBack(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -144,7 +144,7 @@ public class InputManager : MonoBehaviour
 
     public void OnMoveBackCanceled()
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -154,7 +154,7 @@ public class InputManager : MonoBehaviour
 
     public void OnShoot(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -164,7 +164,7 @@ public class InputManager : MonoBehaviour
     // Picking up and dropping wizards
     public void OnWizardInteract(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -175,7 +175,7 @@ public class InputManager : MonoBehaviour
     // (Correct version should be automatically called based on your input device)
     public void OnLookGamepad(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
@@ -186,7 +186,7 @@ public class InputManager : MonoBehaviour
     // (Correct version should be automatically called based on your input device)
     public void OnLookMouse(InputValue input)
     {
-        if(CanAcceptInput()){
+        if(!CanAcceptInput()){
             return;
         }
 
