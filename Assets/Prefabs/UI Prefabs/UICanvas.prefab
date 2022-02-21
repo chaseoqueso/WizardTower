@@ -1140,7 +1140,6 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 560474620022628141}
   pauseMenuDefaultPanel: {fileID: 560474621442192774}
   settingsMenuPanel: {fileID: 560474620385406768}
-  controlsMenuPanel: {fileID: 0}
   continueButton: {fileID: 560474621507052559}
 --- !u!114 &3852459224392575867
 MonoBehaviour:
@@ -1162,6 +1161,7 @@ MonoBehaviour:
   fourthSlot: {fileID: 4537257816932966380}
   fifthSlot: {fileID: 5800233981016286351}
   menuButton: {fileID: 8953404903550239245}
+  crosshairs: []
 --- !u!114 &4089341704103887320
 MonoBehaviour:
   m_ObjectHideFlags: 0

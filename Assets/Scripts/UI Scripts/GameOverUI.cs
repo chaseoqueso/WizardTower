@@ -33,6 +33,8 @@ public class GameOverUI : MonoBehaviour
 
     [SerializeField] private Button menuButton;
 
+    [SerializeField] private List<GameObject> crosshairs = new List<GameObject>();
+
     private const string NO_SCORE = "-";
 
     void Start()
@@ -70,6 +72,10 @@ public class GameOverUI : MonoBehaviour
                 Destroy(entry.Value);
             }
             GameManager.instance.playerDatabase.Clear();
+
+            foreach(GameObject o in crosshairs){
+                o.SetActive(false);
+            }
         }
     }
 
