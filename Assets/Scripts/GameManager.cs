@@ -123,12 +123,12 @@ public class GameManager : MonoBehaviour
         
 
         // If returning to the Main Menu from the char select, delete the players
-        else if (scene.name == "MainMenu"){
-            foreach(KeyValuePair<int, GameObject> entry in playerDatabase){
-                Destroy(entry.Value);
-            }
-            playerDatabase.Clear();
-        }
+        // else if (scene.name == "MainMenu"){
+        //     foreach(KeyValuePair<int, GameObject> entry in playerDatabase){
+        //         Destroy(entry.Value);
+        //     }
+        //     playerDatabase.Clear();
+        // }
     }
 
     public void OnGameStart()

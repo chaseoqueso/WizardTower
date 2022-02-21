@@ -64,6 +64,12 @@ public class GameOverUI : MonoBehaviour
             Time.timeScale = 0f;
             menuButton.Select();
             SetScoreOnGameOver();
+            // OnGameOverSetPlayerOneDesignatedUIWizard();
+
+            foreach(KeyValuePair<int, GameObject> entry in GameManager.instance.playerDatabase){
+                Destroy(entry.Value);
+            }
+            GameManager.instance.playerDatabase.Clear();
         }
     }
 
@@ -73,7 +79,7 @@ public class GameOverUI : MonoBehaviour
         GameObject playerOne = GameManager.instance.playerDatabase[1];
         foreach(GameObject player in GameManager.instance.playerDatabase.Values){
             if(player != playerOne){
-                player.GetComponent<PlayerInput>().enabled = false;
+                // Destroy()
             }
         }
 
@@ -89,10 +95,10 @@ public class GameOverUI : MonoBehaviour
         ToggleGameOverUI(false);
 
         // Undo the above input system stuff
-        foreach(GameObject player in GameManager.instance.playerDatabase.Values){
-            player.GetComponent<PlayerInput>().enabled = true;
-        }
-        GameManager.instance.playerDatabase[1].GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay");
+        // foreach(GameObject player in GameManager.instance.playerDatabase.Values){
+        //     player.GetComponent<PlayerInput>().enabled = true;
+        // }
+        // GameManager.instance.playerDatabase[1].GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay");
 
         Time.timeScale = 1f;
         Debug.Log("Returning to Main Menu!");

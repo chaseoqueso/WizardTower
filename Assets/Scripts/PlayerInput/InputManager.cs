@@ -212,7 +212,7 @@ public class InputManager : MonoBehaviour
             // Deactivate the inputs of all players except this one
             foreach(GameObject player in GameManager.instance.playerDatabase.Values){
                 if(player != gameObject){
-                    player.GetComponent<PlayerInput>().enabled = false;
+                    player.GetComponent<PlayerInput>().DeactivateInput();
                 }
             }
 
@@ -221,14 +221,6 @@ public class InputManager : MonoBehaviour
 
             // Assign the action map instance of the player who paused to the Input Sytem UI Input Module using: InputSystemUiInputModule.ActionsAsset = PlayerInput.actions
             FindObjectOfType<InputSystemUIInputModule>().actionsAsset = GetComponent<PlayerInput>().actions;
-        }
-        else{
-            PauseMenu.instance.ResumeGame();
-            // Undo the above stuff
-            foreach(GameObject player in GameManager.instance.playerDatabase.Values){
-                player.GetComponent<PlayerInput>().enabled = true;
-            }
-            GetComponent<PlayerInput>().SwitchCurrentActionMap("Gameplay");
         }
     }
 

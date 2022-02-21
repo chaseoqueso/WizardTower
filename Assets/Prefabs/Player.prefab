@@ -70,8 +70,8 @@ MonoBehaviour:
   enableLook: 1
   beingPickedUp: 0
   isOnCooldown: 0
-  xLookSensitivity: 0.5
-  yLookSensitivity: 0.5
+  xLookSensitivity: 50
+  yLookSensitivity: 50
   projectilePrefab: {fileID: 1385012735798279716, guid: ea75bf53a41a1744c9db4d06def47408, type: 3}
   wizardType: 4
 --- !u!114 &418084484739323210

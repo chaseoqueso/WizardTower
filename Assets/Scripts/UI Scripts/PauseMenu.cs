@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -33,6 +34,12 @@ public class PauseMenu : MonoBehaviour
         ResetPauseUI();
         Time.timeScale = 1f;
         gameIsPaused = false;
+
+        foreach(GameObject player in GameManager.instance.playerDatabase.Values){
+            PlayerInput input = player.GetComponent<PlayerInput>();
+            input.SwitchCurrentActionMap("Gameplay");
+            input.ActivateInput();
+        }
     }
 
     private void ResetPauseUI()

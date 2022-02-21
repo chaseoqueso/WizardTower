@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public int playerNumber = 0;
 
     private const float moveSpeed = 5;
-    private const float pickupDistance = 3.5f;
+    private const float pickupRange = 3.5f;
+    private const float pickupDistance = 2.5f;
     private const float shootCooldown = 0.5f;
     private const float accel = 0.01f;
 
@@ -73,7 +74,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         moveInput = new Vector3(input.moveInput.x, 0, input.moveInput.y);
-        lookInput = input.lookInput;
+        lookInput = input.lookInput * Time.deltaTime;
 
         if (enableLook)
         {
@@ -96,8 +97,7 @@ public class Player : MonoBehaviour
             playerAnimator.SetTrigger("Grab");
             firstPersonAnimator.SetTrigger("Grab");
             RaycastHit hit;
-            Debug.DrawLine(transform.position + Vector3.up, transform.position + Vector3.up + transform.forward * pickupDistance, Color.yellow, 1);
-            if (Physics.SphereCast(transform.position + Vector3.up, 1, transform.forward, out hit, pickupDistance, LayerMask.GetMask("Player")))
+            if (Physics.SphereCast(transform.position + Vector3.up, 1, transform.forward, out hit, pickupRange, LayerMask.GetMask("Player")))
             {
                 Debug.Log("HitPlayer");
                 switch (wizardType)
